@@ -17,9 +17,9 @@ const navItems: NavItem[] = [
     label: 'Products',
     href: '/products',
     children: [
-      { label: 'DiTech', href: '/products/ditech', description: 'Multi-branch business management system' },
-      { label: 'DiSeller', href: '/products/diseller', description: 'Complete ecommerce solution platform' },
-      { label: 'DiPoS', href: '/products/dipos', description: 'Point of Sales management system' },
+      { label: 'Ditech', href: '/products/ditech', description: 'Multi-branch business management system' },
+      { label: 'Diseller', href: '/products/diseller', description: 'Complete ecommerce solution platform' },
+      { label: 'Dipos', href: '/products/dipos', description: 'Point of Sales management system' },
     ],
   },
   {
