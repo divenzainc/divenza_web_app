@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-background">
             <Navbar />
             <main className="pt-20">{children}</main>
             <Footer />
