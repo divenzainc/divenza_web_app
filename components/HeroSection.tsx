@@ -168,12 +168,12 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
             >
-              <span className="text-[#171717]">Transform Your</span>
+              <span className="text-secondary">Transform Your</span>
               <br />
               <span
                 className="bg-clip-text text-transparent"
                 style={{
-                  backgroundImage: "linear-gradient(135deg, #3F3369 0%, #5a4d8a 40%, #32A790 100%)",
+                  backgroundImage: "linear-gradient(130deg, #3F3369 0%, #5a4d8a 10%, #32A790 100%)",
                 }}
               >
                 Digital Future
@@ -202,7 +202,7 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative px-8 py-4 text-white font-semibold rounded-2xl overflow-hidden transition-all duration-300"
+                className="group relative px-8 text-white font-semibold rounded-2xl overflow-hidden transition-all duration-300"
                 style={{
                   background: "linear-gradient(135deg, #3F3369 0%, #5a4d8a 100%)",
                   boxShadow: "0 10px 40px -10px rgba(63,51,105,0.5)",

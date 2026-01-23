@@ -42,7 +42,7 @@ const Footer = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #32A790 0%, #4bc4a8 50%, #32A790 100%)',
+            background: 'linear-gradient(135deg, #3F3369 0%, #5a4d8a 50%, #32A790 100%)',
         }}
       />
 
