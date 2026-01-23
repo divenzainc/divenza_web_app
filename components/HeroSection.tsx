@@ -58,7 +58,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Beam 1 */}
         <motion.div
-          className="absolute top-[20%] left-0 w-full h-[1px]"
+                  className="absolute top-[20%] left-0 w-full h-px"
           style={{
             background: "linear-gradient(90deg, transparent 0%, rgba(63,51,105,0.3) 50%, transparent 100%)",
           }}
@@ -74,7 +74,7 @@ const HeroSection = () => {
 
         {/* Beam 2 */}
         <motion.div
-          className="absolute top-[60%] left-0 w-full h-[1px]"
+          className="absolute top-[60%] left-0 w-full h-px"
           style={{
             background: "linear-gradient(90deg, transparent 0%, rgba(50,167,144,0.3) 50%, transparent 100%)",
           }}
@@ -91,7 +91,7 @@ const HeroSection = () => {
 
         {/* Vertical Beam */}
         <motion.div
-          className="absolute top-0 left-[30%] w-[1px] h-full"
+          className="absolute top-0 left-[30%] w-px h-full"
           style={{
             background: "linear-gradient(180deg, transparent 0%, rgba(63,51,105,0.2) 50%, transparent 100%)",
           }}
