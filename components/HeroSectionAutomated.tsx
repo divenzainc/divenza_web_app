@@ -217,7 +217,7 @@ const HeroSectionAutomated = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating Gear 1 */}
         <motion.div
-          className="absolute top-[15%] left-[10%]"
+          className="absolute top-[16%] left-[10%]"
           animate={{
             y: [0, -20, 0],
             rotate: 360,
@@ -321,7 +321,7 @@ const HeroSectionAutomated = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-10 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-180px)]">
 
           {/* Left Content */}

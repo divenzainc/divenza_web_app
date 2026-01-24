@@ -26,6 +26,9 @@ const navItems: NavItem[] = [
     label: 'Services',
     href: '/services',
     children: [
+      { label: 'Web Application Development', href: '/services/web-application-development', description: 'Grow your online presence' },
+      { label: 'Mobile Apps', href: '/services/mobile-apps', description: 'Advanced mobile applications' },
+      { label: 'AI Automation', href: '/services/ai-automation', description: 'Automate your business processes' },
       { label: 'Digital Marketing', href: '/services/digital-marketing', description: 'Grow your online presence' },
       { label: 'Social Media Marketing', href: '/services/social-media', description: 'Engage your audience effectively' },
       { label: 'Branding', href: '/services/branding', description: 'Build a memorable brand identity' },
@@ -33,7 +36,8 @@ const navItems: NavItem[] = [
       { label: 'Custom Software', href: '/services/custom-software', description: 'Tailored solutions for your needs' },
     ],
   },
-  { label: 'About', href: '/about' },
+  { label: 'Who We Are', href: '/about' },
+  { label: 'Our Culture', href: '/our-culture' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -105,23 +109,33 @@ const Navbar = () => {
                 {/* Desktop Dropdown */}
                 {item.children && (
                   <div
-                    className="absolute left-0 mt-0 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pt-2"
+                    className={`absolute left-0 mt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pt-2 ${
+                      item.label === 'Services' ? 'w-[580px] -left-40' : 'w-72'
+                    }`}
                     onMouseEnter={() => setActiveDropdown(item.label)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-5 py-4 hover:bg-gray-50 transition-colors duration-150 border-b border-gray-50 last:border-b-0"
-                        >
-                          <span className="block text-gray-800 font-medium">{child.label}</span>
-                          {child.description && (
-                            <span className="block text-sm text-gray-500 mt-1">{child.description}</span>
-                          )}
-                        </Link>
-                      ))}
+                    <div className={`bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden ${
+                      item.label === 'Services' ? 'p-4' : ''
+                    }`}>
+                      <div className={item.label === 'Services' ? 'grid grid-cols-2 gap-2' : ''}>
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className={`block px-5 py-4 hover:bg-gray-50 transition-colors duration-150 ${
+                              item.label === 'Services'
+                                ? 'rounded-lg'
+                                : 'border-b border-gray-50 last:border-b-0'
+                            }`}
+                          >
+                            <span className="block text-gray-800 font-medium">{child.label}</span>
+                            {child.description && (
+                              <span className="block text-sm text-gray-500 mt-1">{child.description}</span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
