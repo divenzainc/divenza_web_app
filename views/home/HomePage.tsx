@@ -1,5 +1,6 @@
 import HeroSection from '@/components/HeroSection'
 import HeroSectionAutomated from '@/components/HeroSectionAutomated'
+import TechStack from '@/components/TechStack'
 import React, { Fragment } from 'react'
 
 const HomePage = () => {
@@ -7,6 +8,7 @@ const HomePage = () => {
       <Fragment>
           {/* <HeroSection /> */}
           <HeroSectionAutomated />
+          <TechStack />
       </Fragment>
   )
 }
