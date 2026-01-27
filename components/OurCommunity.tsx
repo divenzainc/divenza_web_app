@@ -552,7 +552,7 @@ const OurCommunity = () => {
           >
             <Users className="w-4 h-4" style={{ color: "#3F3369" }} />
             <span className="text-sm font-medium" style={{ color: "#3F3369" }}>
-              Success Stories
+              Success Stories with Divenza
             </span>
           </motion.div>
 
