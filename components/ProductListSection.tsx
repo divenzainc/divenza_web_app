@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useCallback } from "react";
 import {
   ShoppingCart,
   Monitor,
@@ -11,6 +13,8 @@ import {
   Package,
   Sparkles,
   Zap,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 interface Product {
@@ -24,7 +28,7 @@ interface Product {
   shadowColor: string;
   accentColor: string;
   officialSite: string;
-  image: string;
+  images: string[];
 }
 
 const products: Product[] = [
@@ -45,7 +49,11 @@ const products: Product[] = [
     shadowColor: "rgba(63,51,105,0.3)",
     accentColor: "#3F3369",
     officialSite: "https://diseller.divenza.com",
-    image: "/products/di-seller-placeholder.png",
+    images: [
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    ],
   },
   {
     id: "di-tech",
@@ -64,7 +72,11 @@ const products: Product[] = [
     shadowColor: "rgba(50,167,144,0.3)",
     accentColor: "#32A790",
     officialSite: "https://ditech.divenza.com",
-    image: "/products/di-tech-placeholder.png",
+    images: [
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    ],
   },
   {
     id: "di-pos",
@@ -83,9 +95,183 @@ const products: Product[] = [
     shadowColor: "rgba(63,51,105,0.25)",
     accentColor: "#3F3369",
     officialSite: "https://dipos.divenza.com",
-    image: "/products/di-pos-placeholder.png",
+    images: [
+      "https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=600&fit=crop",
+    ],
   },
 ];
+
+// Image Carousel Component
+interface ImageCarouselProps {
+  images: string[];
+  productName: string;
+  accentColor: string;
+  autoPlayInterval?: number;
+}
+
+const ImageCarousel = ({
+  images,
+  productName,
+  accentColor,
+  autoPlayInterval = 4000,
+}: ImageCarouselProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [direction, setDirection] = useState(0);
+
+  const hasMultipleImages = images.length > 1;
+
+  const goToNext = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const goToPrevious = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  // Auto-play effect
+  useEffect(() => {
+    if (!hasMultipleImages || isHovered) return;
+
+    const interval = setInterval(goToNext, autoPlayInterval);
+    return () => clearInterval(interval);
+  }, [hasMultipleImages, isHovered, goToNext, autoPlayInterval]);
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+    }),
+  };
+
+  return (
+    <div
+      className="relative w-full h-full rounded-2xl overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Images */}
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+        <motion.div
+          key={currentIndex}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.3 },
+          }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[currentIndex]}
+            alt={`${productName} - Image ${currentIndex + 1}`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
+          {/* Subtle overlay for better contrast */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(180deg, transparent 60%, ${accentColor}15 100%)`,
+            }}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Navigation Arrows - Only show if multiple images */}
+      {hasMultipleImages && (
+        <>
+          {/* Left Arrow */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => {
+              e.preventDefault();
+              goToPrevious();
+            }}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-200 hover:scale-110"
+            style={{
+              background: "rgba(255, 255, 255, 0.9)",
+              boxShadow: "0 4px 15px -3px rgba(0, 0, 0, 0.15)",
+            }}
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-5 h-5" style={{ color: accentColor }} />
+          </motion.button>
+
+          {/* Right Arrow */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => {
+              e.preventDefault();
+              goToNext();
+            }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-200 hover:scale-110"
+            style={{
+              background: "rgba(255, 255, 255, 0.9)",
+              boxShadow: "0 4px 15px -3px rgba(0, 0, 0, 0.15)",
+            }}
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-5 h-5" style={{ color: accentColor }} />
+          </motion.button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setDirection(index > currentIndex ? 1 : -1);
+                  setCurrentIndex(index);
+                }}
+                className="transition-all duration-300"
+                aria-label={`Go to image ${index + 1}`}
+              >
+                <motion.div
+                  animate={{
+                    width: index === currentIndex ? 20 : 6,
+                    opacity: index === currentIndex ? 1 : 0.5,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="h-1.5 rounded-full"
+                  style={{
+                    background:
+                      index === currentIndex
+                        ? accentColor
+                        : "rgba(255, 255, 255, 0.8)",
+                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+                  }}
+                />
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const ProductListSection = () => {
   return (
@@ -218,64 +404,20 @@ const ProductListSection = () => {
                   }}
                 />
 
-                {/* Product Image Section */}
-                <div className="relative lg:w-2/5 h-64 lg:h-auto min-h-[280px] overflow-hidden">
+                {/* Product Image Section with Carousel */}
+                <div className="relative lg:w-2/5 h-64 sm:h-72 lg:h-auto min-h-[280px] lg:min-h-[380px] overflow-hidden">
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-10`}
+                    className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-5`}
                   />
 
-                  {/* Placeholder Image Container */}
-                  <div className="absolute inset-0 flex items-center justify-center p-8">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                      className="relative w-full h-full rounded-2xl overflow-hidden"
-                      style={{
-                        background: `linear-gradient(145deg, ${product.accentColor}15 0%, ${product.accentColor}05 100%)`,
-                        border: `1px solid ${product.accentColor}20`,
-                      }}
-                    >
-                      {/* Product Icon as Placeholder */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                        <motion.div
-                          animate={{ y: [0, -8, 0] }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className={`w-24 h-24 md:w-28 md:h-28 rounded-3xl flex items-center justify-center text-white bg-gradient-to-br ${product.gradient}`}
-                          style={{
-                            boxShadow: `0 20px 40px -15px ${product.shadowColor}`,
-                          }}
-                        >
-                          <div className="scale-150">{product.icon}</div>
-                        </motion.div>
-                        <span
-                          className="text-sm font-medium px-4 py-1.5 rounded-full"
-                          style={{
-                            background: `${product.accentColor}15`,
-                            color: product.accentColor,
-                          }}
-                        >
-                          {product.tagline}
-                        </span>
-                      </div>
-
-                      {/* Decorative elements */}
-                      <div
-                        className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-50"
-                        style={{
-                          background: `radial-gradient(circle, ${product.accentColor}20 0%, transparent 70%)`,
-                        }}
-                      />
-                      <div
-                        className="absolute -bottom-10 -left-10 w-24 h-24 rounded-full opacity-50"
-                        style={{
-                          background: `radial-gradient(circle, ${product.accentColor}15 0%, transparent 70%)`,
-                        }}
-                      />
-                    </motion.div>
+                  {/* Image Carousel Container */}
+                  <div className="absolute inset-0 p-4 sm:p-6 lg:p-8">
+                    <ImageCarousel
+                      images={product.images}
+                      productName={product.name}
+                      accentColor={product.accentColor}
+                      autoPlayInterval={4000}
+                    />
                   </div>
                 </div>
 
@@ -288,7 +430,10 @@ const ProductListSection = () => {
                       className="text-2xl md:text-3xl font-bold text-secondary mb-2 cursor-pointer inline-flex items-center gap-3 group/title"
                     >
                       {product.name}
-                      <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover/title:opacity-100 group-hover/title:translate-x-0 transition-all" style={{ color: product.accentColor }} />
+                      <ArrowRight
+                        className="w-5 h-5 opacity-0 -translate-x-2 group-hover/title:opacity-100 group-hover/title:translate-x-0 transition-all"
+                        style={{ color: product.accentColor }}
+                      />
                     </motion.h3>
                   </Link>
 
