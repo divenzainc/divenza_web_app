@@ -166,9 +166,9 @@ const TechStack = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-gray-500 text-sm md:text-base">
+          {/* <p className="text-gray-500 text-sm md:text-base">
             And many more technologies tailored to your project needs
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </section>

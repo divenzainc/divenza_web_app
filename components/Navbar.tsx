@@ -13,17 +13,9 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
+  { label: 'Who We Are', href: '/about' },
   {
-    label: 'Products',
-    href: '/products',
-    children: [
-      { label: 'Ditech', href: '/products/ditech', description: 'Multi-branch business management system' },
-      { label: 'Diseller', href: '/products/diseller', description: 'Complete ecommerce solution platform' },
-      { label: 'Dipos', href: '/products/dipos', description: 'Point of Sales management system' },
-    ],
-  },
-  {
-    label: 'Services',
+    label: 'What We Do',
     href: '/services',
     children: [
       { label: 'Web Application Development', href: '/services/web-application-development', description: 'Grow your online presence' },
@@ -36,9 +28,17 @@ const navItems: NavItem[] = [
       { label: 'Custom Software', href: '/services/custom-software', description: 'Tailored solutions for your needs' },
     ],
   },
-  { label: 'Who We Are', href: '/about' },
-  { label: 'Our Culture', href: '/our-culture' },
-  { label: 'Contact', href: '/contact' },
+  {
+    label: 'Products',
+    href: '/products',
+    children: [
+      { label: 'Ditech', href: '/products/ditech', description: 'Multi-branch business management system' },
+      { label: 'Diseller', href: '/products/diseller', description: 'Complete ecommerce solution platform' },
+      { label: 'Dipos', href: '/products/dipos', description: 'Point of Sales management system' },
+    ],
+  },
+  { label: 'Family', href: '/our-family' },
+  { label: 'Say Hello', href: '/say-hello' },
 ];
 
 const Navbar = () => {
@@ -80,7 +80,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-primary">Divenza</span>
+              <span className="text-2xl font-bold text-primary">{" { Divenza } "}</span>
             </div>
           </Link>
 
@@ -110,21 +110,21 @@ const Navbar = () => {
                 {item.children && (
                   <div
                     className={`absolute left-0 mt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pt-2 ${
-                      item.label === 'Services' ? 'w-[580px] -left-40' : 'w-72'
+                      item.label === 'What We Do' ? 'w-[580px] -left-40' : 'w-72'
                     }`}
                     onMouseEnter={() => setActiveDropdown(item.label)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <div className={`bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden ${
-                      item.label === 'Services' ? 'p-4' : ''
+                      item.label === 'What We Do' ? 'p-4' : ''
                     }`}>
-                      <div className={item.label === 'Services' ? 'grid grid-cols-2 gap-2' : ''}>
+                      <div className={item.label === 'What We Do' ? 'grid grid-cols-2 gap-2' : ''}>
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
                             href={child.href}
                             className={`block px-5 py-4 hover:bg-gray-50 transition-colors duration-150 ${
-                              item.label === 'Services'
+                              item.label === 'What We Do'
                                 ? 'rounded-lg'
                                 : 'border-b border-gray-50 last:border-b-0'
                             }`}
@@ -149,7 +149,7 @@ const Navbar = () => {
               href="/contact"
             className="inline-flex items-center px-6 py-2.5 bg-secondary text-white font-medium rounded-full hover:bg-primary-light transition-colors duration-200 shadow-md hover:shadow-lg"
             >
-              Get Started
+              We're Here
             </Link>
           </div>
 
@@ -241,7 +241,7 @@ const Navbar = () => {
                     className="block w-full text-center px-6 py-3 bg-secondary text-white font-medium rounded-full hover:bg-primary-light transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
-                  Get Started
+                  We're Here
                 </Link>
               </div>
             </div>
