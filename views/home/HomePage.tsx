@@ -1,6 +1,7 @@
 import HeroSection from '@/components/HeroSection'
 import HeroSectionAutomated from '@/components/HeroSectionAutomated'
 import HowToBuildSolutions from '@/components/HowToBuildSolutions'
+import OurCommunity from '@/components/OurCommunity'
 import ProductListSection from '@/components/ProductListSection'
 import TechStack from '@/components/TechStack'
 import WhatWeDoSection from '@/components/WhatWeDoSection'
@@ -16,6 +17,7 @@ const HomePage = () => {
           <WhatWeDoSection />
           <ProductListSection />
           <HowToBuildSolutions />
+          <OurCommunity />
       </Fragment>
   )
 }

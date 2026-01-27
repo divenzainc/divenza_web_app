@@ -37,7 +37,7 @@ const navItems: NavItem[] = [
       { label: 'Dipos', href: '/products/dipos', description: 'Point of Sales management system' },
     ],
   },
-  { label: 'Family', href: '/our-family' },
+  { label: 'Our Community', href: '/our-community' },
   { label: 'Say Hello', href: '/say-hello' },
 ];
 

@@ -581,7 +581,7 @@ const HowToBuildSolutions = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={sectionRef} className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-[#fafafa] to-white">
+    <section ref={sectionRef} className="relative py-2 overflow-hidden bg-gradient-to-b from-[#fafafa] to-white">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
