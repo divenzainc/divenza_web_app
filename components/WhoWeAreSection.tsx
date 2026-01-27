@@ -114,7 +114,7 @@ const WhoWeAreSection = () => {
         </motion.div>
 
         <motion.div
-          className="absolute bottom-[30%] left-[5%]"
+          className="absolute bottom-[35%] left-[5%]"
           animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }}
           transition={{
             duration: 6,
@@ -445,25 +445,27 @@ const WhoWeAreSection = () => {
                   />
 
                   <div className="relative z-10">
-                    {/* Icon */}
-                    <div
-                      className={`w-14 h-14 rounded-xl mb-5 flex items-center justify-center bg-gradient-to-br ${value.gradient} text-white`}
-                      style={{
-                        boxShadow:
-                          index === 0
-                            ? "0 8px 25px -8px rgba(63,51,105,0.4)"
-                            : index === 1
-                            ? "0 8px 25px -8px rgba(50,167,144,0.4)"
-                            : "0 8px 25px -8px rgba(63,51,105,0.3)",
-                      }}
-                    >
-                      {value.icon}
+                    {/* Icon & Title */}
+                    <div className="flex items-center gap-4 mb-4">
+                      <div
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${value.gradient} text-white`}
+                        style={{
+                          boxShadow:
+                            index === 0
+                              ? "0 8px 25px -8px rgba(63,51,105,0.4)"
+                              : index === 1
+                              ? "0 8px 25px -8px rgba(50,167,144,0.4)"
+                              : "0 8px 25px -8px rgba(63,51,105,0.3)",
+                        }}
+                      >
+                        {value.icon}
+                      </div>
+                      <h4 className="text-lg md:text-xl font-bold text-secondary">
+                        {value.title}
+                      </h4>
                     </div>
 
-                    {/* Content */}
-                    <h4 className="text-lg md:text-xl font-bold text-secondary mb-3">
-                      {value.title}
-                    </h4>
+                    {/* Description */}
                     <p className="text-gray-600 leading-relaxed">
                       {value.description}
                     </p>
