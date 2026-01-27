@@ -13,7 +13,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Who We Are', href: '/about' },
+  { label: 'Who We Are', href: '/about-us' },
   {
     label: 'What We Do',
     href: '/services',
@@ -37,6 +37,7 @@ const navItems: NavItem[] = [
       { label: 'Dipos', href: '/products/dipos', description: 'Point of Sales management system' },
     ],
   },
+  // { label: 'Our Culture', href: '/our-culture' },
   { label: 'Our Community', href: '/our-community' },
   { label: 'Say Hello', href: '/say-hello' },
 ];

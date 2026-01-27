@@ -8,25 +8,31 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const products = [
-    { name: 'Ditech', href: '/products/ditech' },
-    { name: 'Diseller', href: '/products/diseller' },
-    { name: 'Dipos', href: '/products/dipos' },
+    { name: 'DI Tech', href: '/products/ditech' },
+    { name: 'DI Seller', href: '/products/diseller' },
+    { name: 'DI PoS', href: '/products/dipos' },
   ];
 
   const services = [
+    { name: 'Web App Development', href: '/services/web-application-development' },
+    { name: 'Mobile App Development', href: '/services/mobile-application-development' },
+    { name: 'AI Automations', href: '/services/ai-automations' },
     { name: 'Digital Marketing', href: '/services/digital-marketing' },
     { name: 'Social Media Marketing', href: '/services/social-media' },
+    { name: 'Email & SMS Marketing', href: '/services/email-and-sms-marketing' },
     { name: 'Branding', href: '/services/branding' },
     { name: 'SEO', href: '/services/seo' },
-    { name: 'Custom Software', href: '/services/custom-software' },
+    { name: 'Custom Software Solutions', href: '/services/custom-software-solutions' },
   ];
 
   const company = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Who We Are', href: '/about-us' },
+    { name: 'Say hello', href: '/contact-us' },
+    { name: 'Trusted Partners', href: '/contact-us' },
     { name: 'Careers', href: '/careers' },
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Terms of Service', href: '/terms-of-services' },
+    { name: 'Cookie Policy', href: '/cookie-policy' },
   ];
 
   const socialLinks = [
@@ -82,7 +88,7 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <Link href="/" className="inline-block mb-6">
-                <span className="text-3xl font-bold text-white">Divenza</span>
+                <span className="text-3xl font-bold text-white">{" { Divenza } "}</span>
               </Link>
               <p className="text-white/80 mb-6 leading-relaxed">
                 Empowering businesses with innovative digital solutions. We transform ideas into powerful software that drives growth.
@@ -123,7 +129,7 @@ const Footer = () => {
 
             {/* Services */}
             <div>
-              <h4 className="text-lg font-semibold text-white mb-6">Services</h4>
+              <h4 className="text-lg font-semibold text-white mb-6">What We Do</h4>
               <ul className="space-y-4">
                 {services.map((item) => (
                   <li key={item.name}>
@@ -179,28 +185,32 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
+                  <a
+                    href="tel:+1234567890"
+                    className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-3"
+                  >
+                    <Phone className="w-5 h-5 text-white/60" />
+                    +1 (234) 567-890
+                  </a>
+                </li>
+                
+              </ul>
+
+              <h4 className="text-lg font-semibold text-white mb-4 mt-8">We Have Established</h4>
+              <ul className="space-y-4">
+                <li>
+                  <div className="text-white/80 flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-white/60 mt-0.5 flex-shrink-0" />
+                    <span>123 Business Street,<br />Tech City, TC 12345</span>
+                  </div>
+                </li>
+                <li>
                   <div className="text-white/80 flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-white/60 mt-0.5 flex-shrink-0" />
                     <span>123 Business Street,<br />Tech City, TC 12345</span>
                   </div>
                 </li>
               </ul>
-
-              {/* Company Links */}
-              {/* <div className="mt-8 pt-6 border-t border-white/10">
-                <ul className="space-y-3">
-                  {company.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-white/70 hover:text-white text-sm transition-colors duration-200"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
             </div>
           </div>
         </div>
