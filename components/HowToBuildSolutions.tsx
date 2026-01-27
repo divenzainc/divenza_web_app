@@ -12,6 +12,9 @@ import {
   HeartHandshake,
   RefreshCw,
   ArrowRight,
+  ArrowDown,
+  ArrowLeft,
+  ArrowUp,
   ChevronDown,
   ChevronRight,
   RotateCcw,
@@ -212,9 +215,16 @@ const PhaseCard = ({
 };
 
 // Arrow connector for desktop
-const ArrowConnector = ({ direction = "right", delay = 0 }: { direction?: "right" | "down" | "left"; delay?: number }) => {
-  const Icon = direction === "down" ? ChevronDown : ChevronRight;
-  const rotation = direction === "left" ? "rotate-180" : "";
+const ArrowConnector = ({ direction = "right", delay = 0 }: { direction?: "right" | "down" | "left" | "up"; delay?: number }) => {
+  const getIcon = () => {
+    switch (direction) {
+      case "down": return ArrowDown;
+      case "left": return ArrowLeft;
+      case "up": return ArrowUp;
+      default: return ArrowRight;
+    }
+  };
+  const Icon = getIcon();
 
   return (
     <motion.div
@@ -222,15 +232,14 @@ const ArrowConnector = ({ direction = "right", delay = 0 }: { direction?: "right
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay }}
-      className={`flex items-center justify-center ${direction === "down" ? "py-4" : "px-2"}`}
+      className={`flex items-center justify-center ${direction === "down" || direction === "up" ? "py-4" : "px-2"}`}
     >
       <motion.div
         animate={{
           x: direction === "right" ? [0, 5, 0] : direction === "left" ? [0, -5, 0] : 0,
-          y: direction === "down" ? [0, 5, 0] : 0
+          y: direction === "down" ? [0, 5, 0] : direction === "up" ? [0, -5, 0] : 0
         }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        className={rotation}
       >
         <Icon className="w-6 h-6 text-[#32A790]" />
       </motion.div>
@@ -276,16 +285,34 @@ const DesktopFlowView = ({ activePhase, setActivePhase }: { activePhase: number 
             animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ChevronDown className="w-6 h-6 text-[#3F3369]" />
+            <ArrowDown className="w-6 h-6 text-[#3F3369]" />
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Bottom Row: 5 <- 6 <- 7 (displayed right to left) */}
-      <div className="flex items-stretch justify-center gap-2 mt-6">
-        {/* Empty space to align with top row */}
+      {/* Connecting Arrow Up (left side) - back to step 1 - Now above Repeat */}
+      <div className="flex justify-start pl-[130px]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7 }}
+          className="flex flex-col items-center"
+        >
+          <motion.div
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowUp className="w-6 h-6 text-[#32A790]" />
+          </motion.div>
+          <div className="w-0.5 h-8 bg-gradient-to-b from-[#32A790] to-[#3F3369]" />
+        </motion.div>
+      </div>
+
+      {/* Bottom Row: 5 <- 6 <- 7 <- Repeat (displayed right to left) */}
+      <div className="flex items-stretch justify-center gap-2 mt-2">
+        {/* Repeat indicator */}
         <div className="w-[260px] flex items-center justify-center">
-          {/* Loop back indicator */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -308,10 +335,13 @@ const DesktopFlowView = ({ activePhase, setActivePhase }: { activePhase: number 
           </motion.div>
         </div>
 
+        {/* Arrow from 7 to Repeat */}
         <ArrowConnector direction="left" delay={0.6} />
 
-        {bottomRow.map((phase, index) => {
-          const actualIndex = index + 4;
+        {/* Cards 7, 6, 5 with arrows between them */}
+        {[...bottomRow].reverse().map((phase, index) => {
+          const actualIndex = 6 - index; // 6, 5, 4 (phases 7, 6, 5)
+          const isLast = index === bottomRow.length - 1;
           return (
             <div key={phase.id} className="flex items-center">
               <div className="w-[260px]">
@@ -322,30 +352,11 @@ const DesktopFlowView = ({ activePhase, setActivePhase }: { activePhase: number 
                   onHover={setActivePhase}
                 />
               </div>
-              {index < bottomRow.length - 1 && <ArrowConnector direction="left" delay={0.5 + index * 0.1} />}
+              {/* Arrow after each card except the last one (5) */}
+              {!isLast && <ArrowConnector direction="left" delay={0.5 + index * 0.1} />}
             </div>
           );
-        }).reverse()}
-      </div>
-
-      {/* Connecting Arrow Up (left side) - back to step 1 */}
-      <div className="flex justify-start pl-[130px]">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7 }}
-          className="flex flex-col items-center"
-        >
-          <motion.div
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="rotate-180"
-          >
-            <ChevronDown className="w-6 h-6 text-[#32A790]" />
-          </motion.div>
-          <div className="w-0.5 h-8 bg-gradient-to-t from-[#32A790] to-[#3F3369]" />
-        </motion.div>
+        })}
       </div>
     </div>
   );
