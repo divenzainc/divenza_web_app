@@ -110,7 +110,7 @@ const Footer = () => {
             </div>
 
             {/* Products */}
-            <div className="ml-12">
+            <div className="lg:ml-12">
               <h4 className="text-lg font-semibold text-white mb-6">Products</h4>
               <ul className="space-y-4">
                 {products.map((item) => (
