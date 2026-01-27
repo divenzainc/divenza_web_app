@@ -559,11 +559,41 @@ const ProductListSection = () => {
                   Solution?
                 </span>
               </h3>
-              <p className="text-gray-600 max-w-xl mx-auto mb-6">
-                Our products are just the beginning. Let&apos;s discuss how we
-                can build something tailored specifically for your business
-                needs.
+              <p className="text-gray-600 max-w-xl mx-auto mb-5">
+                Our products are just the beginning. Let&apos;s explore how we can create something tailored specifically for your business needs. And don&apos;t worry about being limited by budget — we&apos;ll design a solution that fits.
               </p>
+
+              {/* Investment Quote Callout */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative max-w-lg mx-auto mb-6 px-5 py-4 rounded-xl"
+                style={{
+                  background: "linear-gradient(135deg, rgba(50,167,144,0.08) 0%, rgba(63,51,105,0.08) 100%)",
+                  border: "1px solid rgba(50,167,144,0.2)",
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div
+                    className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                    style={{
+                      background: "linear-gradient(135deg, #32A790 0%, #4bc4a8 100%)",
+                      boxShadow: "0 4px 12px -3px rgba(50,167,144,0.4)",
+                    }}
+                  >
+                    <Sparkles className="w-4 h-4 text-white" />
+                  </div>
+                  <p className="text-sm md:text-base font-medium text-gray-700 leading-relaxed">
+                    Your budget isn&apos;t just a cost, it&apos;s an{" "}
+                    <span className="text-[#32A790] font-semibold">investment</span>
+                    , and we take responsibility for ensuring you see a{" "}
+                    <span className="text-[#3F3369] font-semibold">strong return</span> on it.
+                  </p>
+                </div>
+              </motion.div>
+
               <motion.button
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
