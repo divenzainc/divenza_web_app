@@ -460,7 +460,7 @@ const WhoWeAreSection = () => {
                       >
                         {value.icon}
                       </div>
-                      <h4 className="text-lg md:text-xl font-bold text-secondary">
+                      <h4 className="text-lg md:text-xl font-bold text-secondary whitespace-nowrap">
                         {value.title}
                       </h4>
                     </div>
