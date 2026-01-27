@@ -506,7 +506,7 @@ const MobileTimelineView = ({ activePhase, setActivePhase }: { activePhase: numb
                 </div>
 
                 {/* Progress bar */}
-                <div className="h-1" style={{ background: "rgba(0,0,0,0.1)" }}>
+                {/* <div className="h-1" style={{ background: "rgba(0,0,0,0.1)" }}>
                   <motion.div
                     className="h-full"
                     style={{ background: isActive ? "rgba(255,255,255,0.5)" : colorSet.bg }}
@@ -515,7 +515,7 @@ const MobileTimelineView = ({ activePhase, setActivePhase }: { activePhase: numb
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
                   />
-                </div>
+                </div> */}
               </motion.div>
 
               {/* Connector arrow */}
