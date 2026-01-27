@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   Lightbulb,
   Target,
@@ -13,6 +14,13 @@ import {
   Zap,
   TrendingUp,
 } from "lucide-react";
+
+const rotatingHeadlines = [
+  { prefix: "Where Ideas Become", highlight: "Reliable Systems" },
+  { prefix: "From Vision to", highlight: "Scalable Technology" },
+  { prefix: "Turning Complexity", highlight: "Into Clarity" },
+  { prefix: "Building What Your", highlight: "Business Needs" },
+];
 
 interface ValueCard {
   icon: React.ReactNode;
@@ -55,12 +63,22 @@ const differentiators = [
 ];
 
 const WhoWeAreSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % rotatingHeadlines.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-white">
+    <section className="relative py-2 overflow-hidden bg-white">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Large gradient blob - left */}
-        <motion.div
+        {/* <motion.div
           className="absolute -top-20 -left-40 w-[500px] h-[500px] rounded-full"
           style={{
             background:
@@ -68,10 +86,10 @@ const WhoWeAreSection = () => {
           }}
           animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
+        /> */}
 
         {/* Large gradient blob - right */}
-        <motion.div
+        {/* <motion.div
           className="absolute -bottom-20 -right-40 w-[600px] h-[600px] rounded-full"
           style={{
             background:
@@ -84,7 +102,7 @@ const WhoWeAreSection = () => {
             ease: "easeInOut",
             delay: 1,
           }}
-        />
+        /> */}
 
         {/* Floating decorative elements */}
         <motion.div
@@ -136,17 +154,28 @@ const WhoWeAreSection = () => {
             </span>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-secondary">Not Just Another </span>
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(130deg, #3F3369 0%, #32A790 100%)",
-              }}
-            >
-              IT Company
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 min-h-[1.2em] sm:min-h-[1.2em]">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="inline-block"
+              >
+                <span className="text-secondary">{rotatingHeadlines[currentIndex].prefix} </span>
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(130deg, #3F3369 0%, #32A790 100%)",
+                  }}
+                >
+                  {rotatingHeadlines[currentIndex].highlight}
+                </span>
+              </motion.span>
+            </AnimatePresence>
           </h2>
 
           <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
@@ -298,7 +327,7 @@ const WhoWeAreSection = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + index * 0.08 }}
                   viewport={{ once: true }}
-                  whileHover={{ x: 5 }}
+                  // whileHover={{ x: 5 }}
                   className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300"
                   style={{
                     background: "linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(250,250,250,0.5) 100%)",
@@ -306,7 +335,7 @@ const WhoWeAreSection = () => {
                   }}
                 >
                   <div
-                    className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
                     style={{
                       background:
                         index % 2 === 0

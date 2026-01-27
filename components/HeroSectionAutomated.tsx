@@ -894,12 +894,12 @@ const HeroSectionAutomated = () => {
       </div>
 
       {/* Bottom Gradient Fade */}
-      <div
+      {/* <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
           background: "linear-gradient(to top, rgba(250,250,250,1) 0%, transparent 100%)",
         }}
-      />
+      /> */}
     </section>
   );
 };

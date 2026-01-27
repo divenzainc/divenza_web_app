@@ -39,7 +39,7 @@ const technologies: Technology[] = [
 
 const TechStack = () => {
   return (
-    <section className="relative py-20 md:py-28 bg-linear-to-b from-[#fafafa] to-white overflow-hidden">
+    <section className="relative py-2 bg-linear-to-b from-[#fafafa] to-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
