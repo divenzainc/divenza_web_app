@@ -39,7 +39,7 @@ const navItems: NavItem[] = [
   },
   // { label: 'Our Culture', href: '/our-culture' },
   { label: 'Our Community', href: '/our-community' },
-  { label: 'Say Hello', href: '/say-hello' },
+  { label: 'Say Hello', href: '/contact-us' },
 ];
 
 const Navbar = () => {
@@ -147,7 +147,7 @@ const Navbar = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden lg:block">
             <Link
-              href="/contact"
+              href="/contact-us"
             className="inline-flex items-center px-6 py-2.5 bg-secondary text-white font-medium rounded-full hover:bg-primary-light transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               We're Here
@@ -238,7 +238,7 @@ const Navbar = () => {
               {/* Mobile CTA */}
               <div className="pt-4">
                 <Link
-                  href="/contact"
+                  href="/contact-us"
                     className="block w-full text-center px-6 py-3 bg-secondary text-white font-medium rounded-full hover:bg-primary-light transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
