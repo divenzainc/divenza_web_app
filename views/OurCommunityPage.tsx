@@ -458,7 +458,7 @@ const ClientLogosSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white"
+          className="relative py-20 md:py-28 overflow-hidden bg-white"
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
