@@ -14,21 +14,21 @@ const Footer = () => {
   ];
 
   const services = [
-    { name: 'Web App Development', href: '/services/web-application-development' },
-    { name: 'Mobile App Development', href: '/services/mobile-application-development' },
-    { name: 'AI Automations', href: '/services/ai-automations' },
-    { name: 'Digital Marketing', href: '/services/digital-marketing' },
-    { name: 'Social Media Marketing', href: '/services/social-media' },
-    { name: 'Email & SMS Marketing', href: '/services/email-and-sms-marketing' },
-    { name: 'Branding', href: '/services/branding' },
+    { name: 'Web App Development', href: '/services' },
+    { name: 'Mobile App Development', href: '/services' },
+    { name: 'AI Automations', href: '/services' },
+    { name: 'Digital Marketing', href: '/services' },
+    { name: 'Social Media Marketing', href: '/services' },
+    { name: 'Email & SMS Marketing', href: '/services' },
+    { name: 'Branding', href: '/services' },
     { name: 'SEO', href: '/services/seo' },
-    { name: 'Custom Software Solutions', href: '/services/custom-software-solutions' },
+    { name: 'Custom Software Solutions', href: '/services' },
   ];
 
   const company = [
     { name: 'Who We Are', href: '/about-us' },
     { name: 'Say hello', href: '/contact-us' },
-    { name: 'Trusted Partners', href: '/contact-us' },
+    { name: 'Trusted Partners', href: '/our-community' },
     { name: 'Careers', href: '/careers' },
     { name: 'Privacy Policy', href: '/privacy-policy' },
     { name: 'Terms of Service', href: '/terms-of-services' },
@@ -177,37 +177,39 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+94713343872"
                     className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-3"
                   >
                     <Phone className="w-5 h-5 text-white/60" />
-                    +1 (234) 567-890
+                    +94 (71) 334-3872
                   </a>
                 </li>
                 <li>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+19054399935"
                     className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-3"
                   >
                     <Phone className="w-5 h-5 text-white/60" />
-                    +1 (234) 567-890
+                    +1 (905) 439-9935
                   </a>
                 </li>
                 
               </ul>
 
               <h4 className="text-lg font-semibold text-white mb-4 mt-8">We Have Established</h4>
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 <li>
+                  <h5 className="text-md font-semibold text-white mb-2">Divenza Sri Lanka</h5>
                   <div className="text-white/80 flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-white/60 mt-0.5 flex-shrink-0" />
                     <span>123 Business Street,<br />Tech City, TC 12345</span>
                   </div>
                 </li>
                 <li>
+                  <h5 className="text-md font-semibold text-white mb-2">Divenza Canada</h5>
                   <div className="text-white/80 flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-white/60 mt-0.5 flex-shrink-0" />
-                    <span>123 Business Street,<br />Tech City, TC 12345</span>
+                    <span>Oshawa Centre 419 <br /> King St W,<br />Oshawa, ON L1J 2K5</span>
                   </div>
                 </li>
               </ul>
