@@ -34,7 +34,7 @@ interface Product {
 const products: Product[] = [
   {
     id: "di-seller",
-    name: "DI Seller",
+    name: "DI SELLER",
     tagline: "E-commerce Simplified",
     description:
       "A powerful e-commerce platform designed to help businesses sell smarter. From inventory management to seamless checkout experiences, DI Seller handles it all.",
@@ -57,7 +57,7 @@ const products: Product[] = [
   },
   {
     id: "di-tech",
-    name: "DI Tech",
+    name: "DI TECH CLOUD",
     tagline: "Tech Solutions Hub",
     description:
       "Your one-stop destination for technology solutions. DI Tech connects businesses with cutting-edge tools, services, and expert support to drive digital transformation.",
@@ -80,7 +80,7 @@ const products: Product[] = [
   },
   {
     id: "di-pos",
-    name: "DI PoS",
+    name: "DI POS CLOUD",
     tagline: "Point of Sale Reimagined",
     description:
       "A modern, intuitive point-of-sale system built for retail excellence. Fast transactions, smart inventory, and insightful reports—all in one elegant solution.",

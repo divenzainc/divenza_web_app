@@ -544,10 +544,14 @@ const ContactFormSection = () => {
       newErrors.mobile = "Please enter a valid mobile number";
     }
 
-    // Email validation (optional but must be valid if provided)
-    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if(!formData.email.trim()){
+      newErrors.email = "Email is required";
+    }
+    else if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
+
+    
 
     // Flexible time validation
     if (!formData.flexibleTime.trim()) {
@@ -765,6 +769,7 @@ const ContactFormSection = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   error={errors.email}
+                  required
                   icon={<Mail className="w-5 h-5" />}
                 />
               </div>
