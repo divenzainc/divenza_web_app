@@ -16,6 +16,8 @@ import {
   AlertCircle,
   Sparkles,
   MessageCircle,
+  MapPin,
+  Globe,
 } from "lucide-react";
 
 // Communication medium options
@@ -144,7 +146,7 @@ const InputField = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
-          className={`w-full pl-12 pr-4 py-4 rounded-2xl border-2 transition-all duration-300 outline-none text-gray-800 placeholder-gray-400 ${
+          className={`w-full pl-12 pr-4 py-2 rounded-2xl border-2 transition-all duration-300 outline-none text-gray-800 placeholder-gray-400 ${
             error
               ? "border-red-300 bg-red-50/50 focus:border-red-400"
               : isFocused
@@ -220,7 +222,7 @@ const SelectField = ({
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full pl-12 pr-4 py-4 rounded-2xl border-2 transition-all duration-300 outline-none text-gray-800 appearance-none cursor-pointer ${
+          className={`w-full pl-12 pr-4 py-2 rounded-2xl border-2 transition-all duration-300 outline-none text-gray-800 appearance-none cursor-pointer ${
             isFocused
               ? "border-[#32A790] bg-white shadow-lg shadow-[#32A790]/10"
               : "border-gray-200 bg-gray-50/50 hover:border-gray-300"
@@ -648,6 +650,20 @@ const ContactFormSection = () => {
     );
   }
 
+  // Location data
+  const locations = [
+    {
+      country: "Sri Lanka",
+      flag: "🇱🇰",
+      address: ["123 Business Street,", "Tech City, TC 12345"],
+    },
+    {
+      country: "Canada",
+      flag: "🇨🇦",
+      address: ["Oshawa Centre", "419 King St W,", "Oshawa, ON", "L1J 2K5"],
+    },
+  ];
+
   return (
     <section
       ref={sectionRef}
@@ -680,28 +696,30 @@ const ContactFormSection = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="relative rounded-3xl p-6 sm:p-8 md:p-12 overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(145deg, #ffffff 0%, #fafafa 100%)",
-            boxShadow: "0 25px 80px -20px rgba(63,51,105,0.2)",
-          }}
-        >
-          {/* Decorative corner */}
-          <div
-            className="absolute top-0 right-0 w-40 h-40 opacity-50"
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+          {/* Contact Form - Left Side */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-2 relative rounded-3xl p-6 sm:p-8 md:p-12 overflow-hidden"
             style={{
               background:
-                "radial-gradient(circle at top right, rgba(50,167,144,0.15) 0%, transparent 70%)",
+                "linear-gradient(145deg, #ffffff 0%, #fafafa 100%)",
+              boxShadow: "0 25px 80px -20px rgba(63,51,105,0.2)",
             }}
-          />
+          >
+            {/* Decorative corner */}
+            <div
+              className="absolute top-0 right-0 w-40 h-40 opacity-50"
+              style={{
+                background:
+                  "radial-gradient(circle at top right, rgba(50,167,144,0.15) 0%, transparent 70%)",
+              }}
+            />
 
-          <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
+            <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
             {/* Personal Information Section */}
             <div>
               <h3 className="text-xl font-bold text-secondary mb-6 flex items-center gap-2">
@@ -884,7 +902,119 @@ const ContactFormSection = () => {
               </motion.button>
             </motion.div>
           </form>
-        </motion.div>
+          </motion.div>
+
+          {/* Locations - Right Side */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-1 space-y-6"
+          >
+            {/* Locations Header */}
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white"
+                  style={{
+                    background: "linear-gradient(135deg, #3F3369 0%, #32A790 100%)",
+                  }}
+                >
+                  <Globe className="w-5 h-5" />
+                </div>
+                <h3 className="text-2xl font-bold text-secondary">Our Locations</h3>
+              </div>
+              <p className="text-gray-600">
+                Visit us at any of our global offices
+              </p>
+            </div>
+
+            {/* Location Cards */}
+            {locations.map((location, index) => (
+              <motion.div
+                key={location.country}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="relative rounded-2xl p-6 overflow-hidden group cursor-pointer"
+                style={{
+                  background: "linear-gradient(145deg, #ffffff 0%, #fafafa 100%)",
+                  boxShadow: "0 15px 50px -15px rgba(63,51,105,0.15)",
+                }}
+              >
+                {/* Decorative gradient overlay on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(145deg, rgba(50,167,144,0.05) 0%, rgba(63,51,105,0.03) 100%)",
+                  }}
+                />
+
+                {/* Location content */}
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    {/* <span className="text-3xl">{location.flag}</span> */}
+                    <div>
+                      <h4 className="text-lg font-bold text-secondary">
+                        Divenza {location.country}
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(50,167,144,0.15) 0%, rgba(63,51,105,0.1) 100%)",
+                      }}
+                    >
+                      <MapPin className="w-4 h-4 text-[#32A790]" />
+                    </div>
+                    <div className="text-gray-600 leading-relaxed">
+                      {location.address.map((line, idx) => (
+                        <p key={idx}>{line}</p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative corner accent */}
+                <div
+                  className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                  style={{
+                    background: "radial-gradient(circle, #32A790 0%, transparent 70%)",
+                  }}
+                />
+              </motion.div>
+            ))}
+
+            {/* Additional Info Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="rounded-2xl p-6 border-2 border-dashed border-gray-200 bg-gray-50/50"
+            >
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-[#32A790]/10">
+                  <MessageCircle className="w-6 h-6 text-[#32A790]" />
+                </div>
+                <h4 className="font-semibold text-secondary mb-2">
+                  Prefer to Chat?
+                </h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  Fill out the form and we'll get back to you within 24 hours.
+                </p>
+                <div className="flex items-center justify-center gap-2 text-sm text-[#32A790] font-medium">
+                  <Mail className="w-4 h-4" />
+                  <span>info@divenzainc.com</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -2,7 +2,33 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Globe } from 'lucide-react';
+import { FaFacebook, FaSquareXTwitter, FaLinkedin, FaSquareInstagram, FaPinterest } from "react-icons/fa6";
+import { AiFillTikTok } from "react-icons/ai";
+import { IoLogoYoutube } from "react-icons/io";
+import Divenza_Logo from "@/public/divenza-logo-white.png";
+import Image from 'next/image';
+
+const locations = [
+  {
+    country: 'Sri Lanka',
+    office: 'Divenza Sri Lanka',
+    address: '123 Business Street',
+    city: 'Tech City, TC 12345',
+    flag: '🇱🇰',
+    timezone: 'GMT+5:30',
+    mapUrl: 'https://maps.google.com/?q=Sri+Lanka',
+  },
+  {
+    country: 'Canada',
+    office: 'Divenza Canada',
+    address: 'Oshawa Centre 419 King St W',
+    city: 'Oshawa, ON L1J 2K5',
+    flag: '🇨🇦',
+    timezone: 'GMT-5:00',
+    mapUrl: 'https://maps.google.com/?q=Oshawa+Centre+419+King+St+W+Oshawa+ON',
+  },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,10 +62,13 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
+    { icon: FaFacebook, href: 'https://www.facebook.com/divenzainc', label: 'Facebook' },
+    { icon: FaSquareXTwitter, href: 'https://x.com/divenzainc', label: 'Twitter' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/company/divenza-pvt-ltd', label: 'LinkedIn' },
+    { icon: FaSquareInstagram, href: 'https://www.instagram.com/divenza.inc', label: 'Instagram' },
+    { icon: AiFillTikTok, href: 'https://www.tiktok.com/@divenza.inc', label: 'TikTok' },
+    { icon: IoLogoYoutube, href: 'https://www.youtube.com/@divenza', label: 'YouTube' },
+    { icon: FaPinterest, href: 'https://www.pinterest.com/divenzainc/', label: 'Pinterest' },
   ];
 
   return (
@@ -60,7 +89,7 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="relative z-10">
         {/* Newsletter Section */}
-        <div className="border-b border-white/10">
+        <div className="">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="text-center lg:text-left">
@@ -86,24 +115,24 @@ const Footer = () => {
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             {/* Company Info */}
-            <div className="lg:col-span-1">
-              <Link href="/" className="inline-block mb-6">
-                <span className="text-3xl font-bold text-white">{" { Divenza } "}</span>
+            <div className="lg:col-span-1 -mt-24">
+              <Link href="/" className="inline-block">
+                <Image src={Divenza_Logo} alt="Divenza Logo" height={200} />
               </Link>
-              <p className="text-white/80 mb-6 leading-relaxed">
+              <p className="text-white/80 mb-6 -mt-12 leading-relaxed">
                 Empowering businesses with innovative digital solutions. We transform ideas into powerful software that drives growth.
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-all duration-200 group"
+                    className="flex items-center justify-center transition-all duration-200 group"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-5 h-5 text-white group-hover:scale-110 transition-transform duration-200" />
+                    <social.icon className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-200" />
                   </a>
                 ))}
               </div>
@@ -201,14 +230,14 @@ const Footer = () => {
                 <li>
                   <h5 className="text-md font-semibold text-white mb-2">Divenza Sri Lanka</h5>
                   <div className="text-white/80 flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-white/60 mt-0.5 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 text-white/60 mt-0.5 shrink-0" />
                     <span>123 Business Street,<br />Tech City, TC 12345</span>
                   </div>
                 </li>
                 <li>
                   <h5 className="text-md font-semibold text-white mb-2">Divenza Canada</h5>
                   <div className="text-white/80 flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-white/60 mt-0.5 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 text-white/60 mt-0.5 shrink-0" />
                     <span>Oshawa Centre 419 <br /> King St W,<br />Oshawa, ON L1J 2K5</span>
                   </div>
                 </li>
@@ -218,7 +247,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10">
+        <div className="border-t border-white/10 rounded-full">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-white/70 text-sm text-center md:text-left">

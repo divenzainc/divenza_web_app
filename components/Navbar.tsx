@@ -1,7 +1,9 @@
 'use client';
+import Divenza_Logo from "@/public/divenza-logo-white.png";
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
@@ -72,16 +74,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg' : 'bg-white'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 rounded-sm`}
+      style={{ background: 'linear-gradient(135deg, #3F3369 0%, #5a4d8a 50%, #32A790 100%)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-primary">{" { Divenza } "}</span>
+              <Image src={Divenza_Logo} alt="Divenza Logo" height={200} />
             </div>
           </Link>
 
@@ -91,7 +92,7 @@ const Navbar = () => {
               <div key={item.label} className="relative group">
                 {item.children ? (
                   <button
-                            className="flex items-center px-4 py-2 text-primary hover:text-primary transition-colors duration-200 font-medium"
+                    className="flex items-center px-4 py-2 text-background transition-colors duration-200 font-medium"
                     onMouseEnter={() => setActiveDropdown(item.label)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
@@ -101,7 +102,7 @@ const Navbar = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-4 py-2 text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
+                      className="px-4 py-2 text-background transition-colors duration-200 font-medium"
                   >
                     {item.label}
                   </Link>
@@ -148,7 +149,7 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               href="/contact-us"
-            className="inline-flex items-center px-6 py-2.5 bg-secondary text-white font-medium rounded-full hover:bg-primary-light transition-colors duration-200 shadow-md hover:shadow-lg"
+              className="inline-flex items-center px-6 py-2.5 bg-primary text-white font-medium rounded-full hover:bg-primary-light transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               We're Here
             </Link>
