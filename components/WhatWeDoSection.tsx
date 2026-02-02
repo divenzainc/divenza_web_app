@@ -462,9 +462,10 @@ const WhatWeDoSection = () => {
                 and recommend the perfect combination of services to achieve
                 your goals.
               </p>
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
+                href="/contact-us"
                 className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-2xl transition-all duration-300"
                 style={{
                   background:
@@ -474,7 +475,7 @@ const WhatWeDoSection = () => {
               >
                 Get Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              </motion.a>
             </div>
           </div>
         </motion.div>

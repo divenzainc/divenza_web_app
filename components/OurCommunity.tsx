@@ -631,9 +631,10 @@ const OurCommunity = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mt-12 md:mt-16"
         >
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
+            href="/contact-us"
             className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-2xl transition-all duration-300"
             style={{
               background: "linear-gradient(135deg, #32A790 0%, #4bc4a8 100%)",
@@ -642,7 +643,7 @@ const OurCommunity = () => {
           >
             Join Our Community
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+          </motion.a>
           <p className="text-gray-500 text-sm mt-4">
             Be part of our growing family of successful businesses
           </p>

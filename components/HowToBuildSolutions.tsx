@@ -669,9 +669,10 @@ const HowToBuildSolutions = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
+            href="/contact-us"
             className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-2xl transition-all duration-300"
             style={{
               background: "linear-gradient(135deg, #3F3369 0%, #5a4d8a 100%)",
@@ -680,7 +681,7 @@ const HowToBuildSolutions = () => {
           >
             Start Your Journey
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>

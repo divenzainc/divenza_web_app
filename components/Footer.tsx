@@ -89,7 +89,7 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="relative z-10">
         {/* Newsletter Section */}
-        <div className="">
+        <div className="border-b border-white/10 lg:rounded-4xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="text-center lg:text-left">

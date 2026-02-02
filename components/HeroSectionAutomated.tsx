@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { ArrowRight, Sparkles, Play, TrendingUp, Zap, Settings, CheckCircle2, BarChart3 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 // Animated Counter Component
@@ -395,10 +396,10 @@ const HeroSectionAutomated = () => {
                   boxShadow: "0 10px 40px -10px rgba(63,51,105,0.5)",
                 }}
               >
-                <span className="relative z-10 flex items-center justify-center gap-2">
+                <Link href="/contact-us" className="relative z-10 flex items-center justify-center gap-2">
                   Start Automating
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                </Link>
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{

@@ -35,7 +35,7 @@ const navItems: NavItem[] = [
     href: '/products',
     children: [
       { label: 'DITECH CLOUD', href: '/products/ditechcloud', description: 'Multi-branch business management system' },
-      { label: 'Diseller', href: '/products/diseller', description: 'Complete ecommerce solution platform' },
+      { label: 'DISELLER', href: '/products/diseller', description: 'Complete ecommerce solution platform' },
       { label: 'DIPOS CLOUD', href: '/products/diposcloud', description: 'Point of Sales management system' },
     ],
   },
@@ -157,14 +157,14 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X className="h-6 w-6 text-primary" />
+              <X className="h-6 w-6 text-background" />
             ) : (
-              <Menu className="h-6 w-6 text-primary" />
+              <Menu className="h-6 w-6 text-background" />
             )}
           </button>
         </div>
