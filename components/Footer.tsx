@@ -231,7 +231,7 @@ const Footer = () => {
                   <h5 className="text-md font-semibold text-white mb-2">Divenza Sri Lanka</h5>
                   <div className="text-white/80 flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-white/60 mt-0.5 shrink-0" />
-                    <span>123 Business Street,<br />Tech City, TC 12345</span>
+                    <span>29A, Perakumba Road,<br />Nedimala, Dehiwala,<br /> Sri Lanka</span>
                   </div>
                 </li>
                 <li>
