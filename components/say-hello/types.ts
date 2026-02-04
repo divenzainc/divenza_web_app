@@ -34,4 +34,5 @@ export interface Location {
   country: string;
   flag: string;
   address: string[];
+  phone: string;
 }

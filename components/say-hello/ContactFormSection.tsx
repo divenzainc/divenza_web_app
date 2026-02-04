@@ -359,6 +359,22 @@ const ContactFormSection = ({
                       ))}
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-3 mt-3">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(50,167,144,0.15) 0%, rgba(63,51,105,0.1) 100%)",
+                      }}
+                    >
+                      <Phone className="w-4 h-4 text-[#32A790]" />
+                    </div>
+                    <div className="text-gray-600 leading-relaxed">
+                      <a href={`tel:${location.phone.replace(/[\s()-]/g, "")}`} className="hover:text-[#32A790] transition-colors">
+                        {location.phone}
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Decorative corner accent */}

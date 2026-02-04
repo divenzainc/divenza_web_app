@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, ArrowRight, Globe } from 'lucide-react';
 import { FaFacebook, FaSquareXTwitter, FaLinkedin, FaSquareInstagram, FaPinterest } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import { IoLogoYoutube } from "react-icons/io";
-import Divenza_Logo from "@/public/divenza-logo-white.png";
+import Divenza_Logo from "@/public/Logo.png";
 import Image from 'next/image';
 
 const locations = [
@@ -115,11 +115,11 @@ const Footer = () => {
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             {/* Company Info */}
-            <div className="lg:col-span-1 -mt-24">
+            <div className="lg:col-span-1 -mt-4">
               <Link href="/" className="inline-block">
-                <Image src={Divenza_Logo} alt="Divenza Logo" height={200} />
+                <Image src={Divenza_Logo} alt="Divenza Logo" height={95} />
               </Link>
-              <p className="text-white/80 mb-6 -mt-12 leading-relaxed">
+              <p className="text-white/80 mb-6 mt-6 leading-relaxed">
                 Empowering businesses with innovative digital solutions. We transform ideas into powerful software that drives growth.
               </p>
               <div className="flex gap-4">
