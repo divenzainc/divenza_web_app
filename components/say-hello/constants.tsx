@@ -59,10 +59,12 @@ export const locations: Location[] = [
     country: "Sri Lanka",
     flag: "🇱🇰",
     address: ["123 Business Street,", "Tech City, TC 12345"],
+    phone: "+94 (71) 334-3872",
   },
   {
     country: "Canada",
     flag: "🇨🇦",
     address: ["Oshawa Centre", "419 King St W,", "Oshawa, ON", "L1J 2K5"],
+    phone: "+1 (905) 439-9935",
   },
 ];
