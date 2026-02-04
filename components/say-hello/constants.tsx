@@ -1,0 +1,68 @@
+import { PhoneCall, Phone, Video } from "lucide-react";
+import { CommunicationMedium, Location } from "./types";
+
+// Communication medium options
+export const communicationMediums: CommunicationMedium[] = [
+  {
+    id: "normal_call",
+    label: "Normal Call",
+    icon: <PhoneCall className="w-5 h-5" />,
+    description: "Traditional phone call",
+  },
+  {
+    id: "whatsapp_call",
+    label: "WhatsApp Call",
+    icon: <Phone className="w-5 h-5" />,
+    description: "Voice or video via WhatsApp",
+  },
+  {
+    id: "google_meet",
+    label: "Google Meet",
+    icon: <Video className="w-5 h-5" />,
+    description: "Video conference",
+  },
+  {
+    id: "zoom",
+    label: "Zoom",
+    icon: <Video className="w-5 h-5" />,
+    description: "Video meeting",
+  },
+  {
+    id: "ms_teams",
+    label: "MS Teams",
+    icon: <Video className="w-5 h-5" />,
+    description: "Microsoft Teams call",
+  },
+];
+
+// Business type options
+export const businessTypes = [
+  "Startup",
+  "Small Business",
+  "Medium Enterprise",
+  "Large Enterprise",
+  "E-commerce",
+  "Healthcare",
+  "Education",
+  "Finance",
+  "Real Estate",
+  "Hospitality",
+  "Retail",
+  "Manufacturing",
+  "Technology",
+  "Other",
+];
+
+// Location data
+export const locations: Location[] = [
+  {
+    country: "Sri Lanka",
+    flag: "🇱🇰",
+    address: ["123 Business Street,", "Tech City, TC 12345"],
+  },
+  {
+    country: "Canada",
+    flag: "🇨🇦",
+    address: ["Oshawa Centre", "419 King St W,", "Oshawa, ON", "L1J 2K5"],
+  },
+];

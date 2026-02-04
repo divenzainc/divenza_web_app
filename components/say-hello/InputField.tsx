@@ -1,0 +1,88 @@
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { AlertCircle } from "lucide-react";
+
+interface InputFieldProps {
+  label: string;
+  name: string;
+  type?: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
+  required?: boolean;
+  icon: React.ReactNode;
+}
+
+const InputField = ({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  value,
+  onChange,
+  error,
+  required = false,
+  icon,
+}: InputFieldProps) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="relative"
+    >
+      <label className="block mb-2 text-sm font-medium text-gray-700">
+        {label}
+        {required ? (
+          <span className="text-red-500 ml-1">*</span>
+        ) : (
+          <span className="text-gray-400 ml-1 text-xs">(Optional)</span>
+        )}
+      </label>
+      <div className="relative">
+        <div
+          className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-200 ${
+            isFocused ? "text-[#32A790]" : error ? "text-red-400" : "text-gray-400"
+          }`}
+        >
+          {icon}
+        </div>
+        <input
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          placeholder={placeholder}
+          className={`w-full pl-12 pr-4 py-2 rounded-2xl border-2 transition-all duration-300 outline-none text-gray-800 placeholder-gray-400 ${
+            error
+              ? "border-red-300 bg-red-50/50 focus:border-red-400"
+              : isFocused
+              ? "border-[#32A790] bg-white shadow-lg shadow-[#32A790]/10"
+              : "border-gray-200 bg-gray-50/50 hover:border-gray-300"
+          }`}
+        />
+      </div>
+      <AnimatePresence>
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            className="mt-2 text-sm text-red-500 flex items-center gap-1"
+          >
+            <AlertCircle className="w-4 h-4" />
+            {error}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
+export default InputField;
