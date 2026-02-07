@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Divenza Pvt Ltd | IT Solutions & Digital Services",
-  description: "Divenza offers complete IT solutions including DiTech, DiSeller, DiPoS, digital marketing, SEO, branding, and custom software development for businesses.",
+  description: "Divenza offers complete IT solutions including DI Tech Cloud, DI Seller, DI PoS, Digital Marketing, SEO, Branding, and Custom Software Development for businesses.",
   manifest: "/manifest.json",
 };
 

@@ -48,7 +48,7 @@ const products: Product[] = [
     gradient: "from-[#3F3369] to-[#5a4d8a]",
     shadowColor: "rgba(63,51,105,0.3)",
     accentColor: "#3F3369",
-    officialSite: "https://diseller.divenza.com",
+    officialSite: "https://disellercom",
     images: [
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
@@ -71,7 +71,7 @@ const products: Product[] = [
     gradient: "from-[#32A790] to-[#4bc4a8]",
     shadowColor: "rgba(50,167,144,0.3)",
     accentColor: "#32A790",
-    officialSite: "https://ditech.divenza.com",
+    officialSite: "https://ditechcloud.com",
     images: [
       "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
@@ -94,7 +94,7 @@ const products: Product[] = [
     gradient: "from-[#3F3369] to-[#32A790]",
     shadowColor: "rgba(63,51,105,0.25)",
     accentColor: "#3F3369",
-    officialSite: "https://dipos.divenza.com",
+    officialSite: "https://diposcloud.com",
     images: [
       "https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=600&fit=crop",
