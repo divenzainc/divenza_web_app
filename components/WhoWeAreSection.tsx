@@ -249,13 +249,13 @@ const WhoWeAreSection = () => {
                 </p>
 
                 <p className="text-gray-600 leading-relaxed">
-                  Our flagship products—
-                  <span className="font-semibold text-[#3F3369]">DiSeller</span>
+                  Our flagship products{" "}
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://diseller.com">DI Seller</Link></span>
                   ,{" "}
-                  <span className="font-semibold text-[#3F3369]">DiTech</span>,
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://ditechcloud.com">DI Tech Cloud</Link></span>,
                   and{" "}
-                  <span className="font-semibold text-[#3F3369]">DiPOS</span>
-                  —were born from real business needs, refined through real
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://diposcloud.com">DI POS Cloud</Link></span>
+                  {" "}were born from real business needs, refined through real
                   feedback, and trusted by businesses that demand excellence.
                 </p>
 
