@@ -9,26 +9,6 @@ import { IoLogoYoutube } from "react-icons/io";
 import Divenza_Logo from "@/public/Logo.png";
 import Image from 'next/image';
 
-const locations = [
-  {
-    country: 'Sri Lanka',
-    office: 'Divenza Sri Lanka',
-    address: '123 Business Street',
-    city: 'Tech City, TC 12345',
-    flag: '🇱🇰',
-    timezone: 'GMT+5:30',
-    mapUrl: 'https://maps.google.com/?q=Sri+Lanka',
-  },
-  {
-    country: 'Canada',
-    office: 'Divenza Canada',
-    address: 'Oshawa Centre 419 King St W',
-    city: 'Oshawa, ON L1J 2K5',
-    flag: '🇨🇦',
-    timezone: 'GMT-5:00',
-    mapUrl: 'https://maps.google.com/?q=Oshawa+Centre+419+King+St+W+Oshawa+ON',
-  },
-];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -238,7 +218,7 @@ const Footer = () => {
                   <h5 className="text-md font-semibold text-white mb-2">Divenza Canada</h5>
                   <div className="text-white/80 flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-white/60 mt-0.5 shrink-0" />
-                    <span>Oshawa Centre 419 <br /> King St W,<br />Oshawa, ON L1J 2K5</span>
+                    <span>Oshawa Centre <br /> 419 King St W,<br /> Oshawa, ON <br /> L1J 2K5</span>
                   </div>
                 </li>
               </ul>
