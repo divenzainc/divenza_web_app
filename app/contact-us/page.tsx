@@ -1,11 +1,15 @@
+import { headers } from 'next/headers'
 import MainLayout from '@/layout/main/Index'
 import SayHelloPage from '@/views/SayHelloPage'
-import React from 'react'
+import type { CountryCode } from 'libphonenumber-js/core'
 
-const page = () => {
+const page = async () => {
+  const headersList = await headers()
+  const countryCode = (headersList.get('x-vercel-ip-country') || 'CA') as CountryCode
+
   return (
     <MainLayout>
-      <SayHelloPage />
+      <SayHelloPage defaultCountry={countryCode} />
     </MainLayout>
   )
 }

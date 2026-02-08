@@ -35,24 +35,6 @@ export const communicationMediums: CommunicationMedium[] = [
   },
 ];
 
-// Business type options
-export const businessTypes = [
-  "Startup",
-  "Small Business",
-  "Medium Enterprise",
-  "Large Enterprise",
-  "E-commerce",
-  "Healthcare",
-  "Education",
-  "Finance",
-  "Real Estate",
-  "Hospitality",
-  "Retail",
-  "Manufacturing",
-  "Technology",
-  "Other",
-];
-
 // Location data
 export const locations: Location[] = [
   {
