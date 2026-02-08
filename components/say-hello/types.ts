@@ -5,6 +5,7 @@ export interface FormData {
   name: string;
   mobile: string;
   email: string;
+  serviceType: string;
   businessType: string;
   businessBrief: string;
   flexibleTime: string;
@@ -16,9 +17,16 @@ export interface FormErrors {
   name?: string;
   mobile?: string;
   email?: string;
+  serviceType?: string;
   businessType?: string;
   flexibleTime?: string;
   communicationMedium?: string;
+}
+
+// Dropdown option from API
+export interface DropdownOption {
+  _id: string;
+  name: string;
 }
 
 // Communication medium type

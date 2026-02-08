@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import apiClient from "@/utils/ApiClient";
 import toast from "react-hot-toast";
+import { isPossiblePhoneNumber } from "react-phone-number-input";
+import type { CountryCode } from "libphonenumber-js/core";
 import {
   HeroSection,
   ContactFormSection,
@@ -10,25 +12,79 @@ import {
   SuccessModal,
   FormData,
   FormErrors,
+  DropdownOption,
 } from "@/components/say-hello";
 
 const initialFormData: FormData = {
   name: "",
   mobile: "",
   email: "",
+  serviceType: "",
   businessType: "",
   businessBrief: "",
   flexibleTime: "",
   communicationMedium: "",
 };
 
-const SayHelloPage = () => {
+interface SayHelloPageProps {
+  defaultCountry?: CountryCode;
+}
+
+const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [customerId, setCustomerId] = useState<string>("");
+
+  // Dropdown data from API
+  const [serviceTypes, setServiceTypes] = useState<DropdownOption[]>([]);
+  const [businessTypes, setBusinessTypes] = useState<DropdownOption[]>([]);
+  const [isLoadingServiceTypes, setIsLoadingServiceTypes] = useState(true);
+  const [isLoadingBusinessTypes, setIsLoadingBusinessTypes] = useState(true);
+
+  // Fetch service types and business types on mount
+  useEffect(() => {
+    const fetchServiceTypes = async () => {
+      try {
+        const response = await apiClient.get("/service-type/get-all");
+        if (response.data.status) {
+          setServiceTypes(
+            response.data.data.map((item: { _id: string; name: string }) => ({
+              _id: item._id,
+              name: item.name,
+            }))
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching service types:", error);
+      } finally {
+        setIsLoadingServiceTypes(false);
+      }
+    };
+
+    const fetchBusinessTypes = async () => {
+      try {
+        const response = await apiClient.get("/business-type/get-all");
+        if (response.data.status) {
+          setBusinessTypes(
+            response.data.data.map((item: { _id: string; name: string }) => ({
+              _id: item._id,
+              name: item.name,
+            }))
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching business types:", error);
+      } finally {
+        setIsLoadingBusinessTypes(false);
+      }
+    };
+
+    fetchServiceTypes();
+    fetchBusinessTypes();
+  }, []);
 
   // Handle input changes
   const handleInputChange = (
@@ -38,6 +94,22 @@ const SayHelloPage = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  // Handle searchable select changes
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  // Handle phone number change
+  const handlePhoneChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, mobile: value }));
+    if (errors.mobile) {
+      setErrors((prev) => ({ ...prev, mobile: undefined }));
     }
   };
 
@@ -59,9 +131,9 @@ const SayHelloPage = () => {
       newErrors.name = "Name must be at least 2 characters";
     }
 
-    if (!formData.mobile.trim()) {
+    if (!formData.mobile) {
       newErrors.mobile = "Mobile number is required";
-    } else if (!/^[\d\s+()-]{8,20}$/.test(formData.mobile.trim())) {
+    } else if (!isPossiblePhoneNumber(formData.mobile)) {
       newErrors.mobile = "Please enter a valid mobile number";
     }
 
@@ -69,6 +141,10 @@ const SayHelloPage = () => {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.serviceType) {
+      newErrors.serviceType = "Please select a service type";
     }
 
     if (!formData.businessType) {
@@ -185,7 +261,14 @@ const SayHelloPage = () => {
         formData={formData}
         errors={errors}
         isSubmitting={isSubmitting}
+        defaultCountry={defaultCountry}
+        serviceTypes={serviceTypes}
+        businessTypes={businessTypes}
+        isLoadingServiceTypes={isLoadingServiceTypes}
+        isLoadingBusinessTypes={isLoadingBusinessTypes}
         onInputChange={handleInputChange}
+        onSelectChange={handleSelectChange}
+        onPhoneChange={handlePhoneChange}
         onMediumSelect={handleMediumSelect}
         onSubmit={handleSubmit}
       />

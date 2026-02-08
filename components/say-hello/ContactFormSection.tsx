@@ -14,11 +14,14 @@ import {
   MessageCircle,
   MapPin,
   Globe,
+  Layers,
 } from "lucide-react";
-import { FormData, FormErrors } from "./types";
-import { communicationMediums, businessTypes, locations } from "./constants";
+import type { CountryCode } from "libphonenumber-js/core";
+import { FormData, FormErrors, DropdownOption } from "./types";
+import { communicationMediums, locations } from "./constants";
 import InputField from "./InputField";
-import SelectField from "./SelectField";
+import PhoneInputField from "./PhoneInputField";
+import SearchableSelectField from "./SearchableSelectField";
 import TextareaField from "./TextareaField";
 import MediumCard from "./MediumCard";
 
@@ -26,9 +29,16 @@ interface ContactFormSectionProps {
   formData: FormData;
   errors: FormErrors;
   isSubmitting: boolean;
+  defaultCountry?: CountryCode;
+  serviceTypes: DropdownOption[];
+  businessTypes: DropdownOption[];
+  isLoadingServiceTypes?: boolean;
+  isLoadingBusinessTypes?: boolean;
   onInputChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => void;
+  onSelectChange: (name: string, value: string) => void;
+  onPhoneChange: (value: string) => void;
   onMediumSelect: (mediumId: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
@@ -37,7 +47,14 @@ const ContactFormSection = ({
   formData,
   errors,
   isSubmitting,
+  defaultCountry = "LK",
+  serviceTypes,
+  businessTypes,
+  isLoadingServiceTypes = false,
+  isLoadingBusinessTypes = false,
   onInputChange,
+  onSelectChange,
+  onPhoneChange,
   onMediumSelect,
   onSubmit,
 }: ContactFormSectionProps) => {
@@ -123,15 +140,13 @@ const ContactFormSection = ({
                     required
                     icon={<User className="w-5 h-5" />}
                   />
-                  <InputField
+                  <PhoneInputField
                     label="Mobile Number"
-                    name="mobile"
-                    type="tel"
-                    placeholder="+1 (234) 567-890"
                     value={formData.mobile}
-                    onChange={onInputChange}
+                    onChange={onPhoneChange}
                     error={errors.mobile}
                     required
+                    defaultCountry={defaultCountry}
                     icon={<Phone className="w-5 h-5" />}
                   />
                 </div>
@@ -164,17 +179,32 @@ const ContactFormSection = ({
                   Business Details
                 </h3>
                 <div className="space-y-6">
-                  <SelectField
-                    label="Type of Business"
-                    name="businessType"
-                    value={formData.businessType}
-                    onChange={onInputChange}
-                    options={businessTypes}
-                    placeholder="Select your business type"
-                    error={errors.businessType}
-                    required
-                    icon={<Briefcase className="w-5 h-5" />}
-                  />
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <SearchableSelectField
+                      label="Type of Service"
+                      name="serviceType"
+                      value={formData.serviceType}
+                      onChange={onSelectChange}
+                      options={serviceTypes}
+                      placeholder="Select a service type"
+                      error={errors.serviceType}
+                      required
+                      icon={<Layers className="w-5 h-5" />}
+                      isLoading={isLoadingServiceTypes}
+                    />
+                    <SearchableSelectField
+                      label="Type of Business"
+                      name="businessType"
+                      value={formData.businessType}
+                      onChange={onSelectChange}
+                      options={businessTypes}
+                      placeholder="Select your business type"
+                      error={errors.businessType}
+                      required
+                      icon={<Briefcase className="w-5 h-5" />}
+                      isLoading={isLoadingBusinessTypes}
+                    />
+                  </div>
                   <TextareaField
                     label="Brief About Your Business"
                     name="businessBrief"
