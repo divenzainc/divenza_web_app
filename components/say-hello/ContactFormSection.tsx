@@ -147,7 +147,6 @@ const ContactFormSection = ({
                     error={errors.mobile}
                     required
                     defaultCountry={defaultCountry}
-                    icon={<Phone className="w-5 h-5" />}
                   />
                 </div>
                 <div className="mt-6">

@@ -35,7 +35,7 @@ body {
 
 .phone-input-custom .PhoneInputCountry {
   position: relative;
-  margin-left: 2.75rem;
+  margin-left: 0;
   margin-right: 0.5rem;
   padding-right: 0.5rem;
   border-right: 1px solid #e5e7eb;
