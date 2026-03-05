@@ -48,7 +48,7 @@ const products: Product[] = [
     gradient: "from-[#3F3369] to-[#5a4d8a]",
     shadowColor: "rgba(63,51,105,0.3)",
     accentColor: "#3F3369",
-    officialSite: "https://disellercom",
+    officialSite: "https://diseller.com",
     images: [
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
