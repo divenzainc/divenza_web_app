@@ -1,6 +1,7 @@
 'use client';
 
 import Footer from '@/components/Footer';
+import FloatingHelp from '@/components/FloatingHelp';
 import Navbar from '@/components/Navbar';
 
 interface MainLayoutProps {
@@ -13,6 +14,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             <Navbar />
             <main className="pt-20">{children}</main>
             <Footer />
+            <FloatingHelp />
         </div>
     );
 }
