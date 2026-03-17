@@ -41,7 +41,7 @@ export const locations: Location[] = [
     country: "Sri Lanka",
     flag: "🇱🇰",
     address: ["29A, Perakumba Road,", "Nedimala, Dehiwala, Sri Lanka"],
-    phone: "+94 (71) 334-3872",
+    phone: "+94 (70) 446-9834",
   },
   {
     country: "Canada",

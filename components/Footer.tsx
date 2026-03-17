@@ -14,9 +14,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const products = [
-    { name: 'DI Tech', href: '/products/ditech' },
-    { name: 'DI Seller', href: '/products/diseller' },
-    { name: 'DI PoS', href: '/products/dipos' },
+    { name: 'Ditech Cloud', href: '/products/ditech' },
+    { name: 'Diseller', href: '/products/diseller' },
+    { name: 'Dipos Cloud', href: '/products/dipos' },
   ];
 
   const services = [
