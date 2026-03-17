@@ -39,6 +39,7 @@ const Footer = () => {
     { name: 'Privacy Policy', href: '/privacy-policy' },
     { name: 'Terms of Service', href: '/terms-of-services' },
     { name: 'Cookie Policy', href: '/cookie-policy' },
+    { name: 'Refund Policy', href: '/refund-policy' },
   ];
 
   const socialLinks = [
@@ -177,11 +178,11 @@ const Footer = () => {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:info@divenzainc.com"
+                    href="mailto:contact@divenzainc.com"
                     className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-3"
                   >
                     <Mail className="w-5 h-5 text-white/60" />
-                    info@divenzainc.com
+                    contact@divenzainc.com
                   </a>
                 </li>
                 <li>
