@@ -74,7 +74,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 rounded-sm`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
       style={{ background: 'linear-gradient(135deg, #3F3369 0%, #5a4d8a 50%, #32A790 100%)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

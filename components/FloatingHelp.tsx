@@ -16,12 +16,12 @@ export default function FloatingHelp() {
                     {/* AI Assistance - coming soon */}
                     <div className="flex items-center gap-2">
                         <span className="bg-white text-gray-700 text-sm px-3 py-1.5 rounded-full shadow-md border border-gray-100 whitespace-nowrap">
-                            AI Assistant <span className="text-xs text-indigo-500 font-medium">— Coming Soon</span>
+                            AI Assistant <span className="text-xs text-indigo-500 font-medium">— Coming Soon!</span>
                         </span>
                         <button
                             disabled
                             title="AI Assistance — Coming Soon"
-                            className="w-11 h-11 rounded-full bg-indigo-100 text-indigo-400 flex items-center justify-center shadow cursor-not-allowed"
+                            className="w-11 h-11 rounded-full bg-indigo-100 text-primary flex items-center justify-center shadow cursor-not-allowed"
                         >
                             <Bot size={20} />
                         </button>
@@ -49,7 +49,7 @@ export default function FloatingHelp() {
             <button
                 onClick={() => setOpen(!open)}
                 title={open ? 'Close' : 'Need Help?'}
-                className="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg hover:bg-gray-700 transition-all duration-200 cursor-pointer"
+                className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg hover:bg-secondary transition-all duration-200 cursor-pointer"
                 style={{ width: '50px', height: '50px' }}
             >
                 {open ? <X size={20} /> : <MessageCircleHeart size={25} />}

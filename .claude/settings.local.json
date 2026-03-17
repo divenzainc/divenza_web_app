@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(node -e \"const { Store } = require\\(''lucide-react''\\); console.log\\(Store ? ''Store OK'' : ''NOT FOUND''\\)\")"
+    ]
+  }
+}
