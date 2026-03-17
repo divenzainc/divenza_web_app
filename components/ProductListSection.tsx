@@ -33,7 +33,7 @@ interface Product {
 
 const products: Product[] = [
   {
-    id: "di-seller",
+    id: "diseller",
     name: "DI SELLER",
     tagline: "E-commerce Simplified",
     description:
@@ -56,7 +56,7 @@ const products: Product[] = [
     ],
   },
   {
-    id: "di-tech",
+    id: "ditechcloud",
     name: "DI TECH CLOUD",
     tagline: "Tech Solutions Hub",
     description:
@@ -79,7 +79,7 @@ const products: Product[] = [
     ],
   },
   {
-    id: "di-pos",
+    id: "diposcloud",
     name: "DI POS CLOUD",
     tagline: "Point of Sale Reimagined",
     description:
@@ -569,15 +569,15 @@ const ProductListSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
-                className="relative max-w-lg mx-auto mb-6 px-5 py-4 rounded-xl"
+                className="relative max-w-md mx-auto mb-6 px-4 py-3 rounded-xl"
                 style={{
                   background: "linear-gradient(135deg, rgba(50,167,144,0.08) 0%, rgba(63,51,105,0.08) 100%)",
                   border: "1px solid rgba(50,167,144,0.2)",
                 }}
               >
-                <div className="flex items-start gap-3">
+                <div className="flex items-center gap-3">
                   <div
-                    className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                    className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
                     style={{
                       background: "linear-gradient(135deg, #32A790 0%, #4bc4a8 100%)",
                       boxShadow: "0 4px 12px -3px rgba(50,167,144,0.4)",
@@ -585,28 +585,30 @@ const ProductListSection = () => {
                   >
                     <Sparkles className="w-4 h-4 text-white" />
                   </div>
-                  <p className="text-sm md:text-base font-medium text-gray-700 leading-relaxed">
-                    Your budget isn&apos;t just a cost, it&apos;s an{" "}
-                    <span className="text-[#32A790] font-semibold">investment</span>
-                    , and we take responsibility for ensuring you see a{" "}
-                    <span className="text-[#3F3369] font-semibold">strong return</span> on it.
+                  <p className="text-sm font-medium text-gray-700 leading-snug">
+                    Your budget is an <span className="text-[#32A790] font-semibold">investment</span> — we ensure{" "}
+                    <span className="text-[#3F3369] font-semibold">strong returns</span> on every rupee.
                   </p>
                 </div>
               </motion.div>
 
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-2xl transition-all duration-300"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #3F3369 0%, #5a4d8a 100%)",
-                  boxShadow: "0 10px 40px -10px rgba(63,51,105,0.5)",
-                }}
               >
-                Let&apos;s Talk
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+                <Link
+                  href="/contact-us"
+                  className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-2xl transition-all duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #3F3369 0%, #5a4d8a 100%)",
+                    boxShadow: "0 10px 40px -10px rgba(63,51,105,0.5)",
+                  }}
+                >
+                  Let&apos;s Talk
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
             </div>
           </div>
         </motion.div>

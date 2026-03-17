@@ -433,9 +433,13 @@ const ContactFormSection = ({
                 <p className="text-sm text-gray-600 mb-4">
                   Fill out the form and we'll get back to you within 24 hours.
                 </p>
+                {/* <div className="flex items-center justify-center gap-2 text-sm text-[#32A790] font-medium">
+                  <Mail className="w-4 h-4" />
+                  <span>sales@divenzainc.com</span>
+                </div> */}
                 <div className="flex items-center justify-center gap-2 text-sm text-[#32A790] font-medium">
                   <Mail className="w-4 h-4" />
-                  <span>info@divenzainc.com</span>
+                  <span>contact@divenzainc.com</span>
                 </div>
               </div>
             </motion.div>
