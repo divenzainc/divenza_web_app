@@ -177,11 +177,11 @@ const Footer = () => {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:info@divenza.com"
+                    href="mailto:info@divenzainc.com"
                     className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-3"
                   >
                     <Mail className="w-5 h-5 text-white/60" />
-                    info@divenza.com
+                    info@divenzainc.com
                   </a>
                 </li>
                 <li>
