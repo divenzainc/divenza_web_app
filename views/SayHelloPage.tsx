@@ -22,7 +22,10 @@ const initialFormData: FormData = {
   serviceType: "",
   businessType: "",
   businessBrief: "",
+  flexibleDate: "",
   flexibleTime: "",
+  sameAsMobile: false,
+  whatsAppNumber: "",
   communicationMedium: "",
 };
 
@@ -36,7 +39,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [customerId, setCustomerId] = useState<string>("");
+  const [inquiryId, setInquiryId] = useState<string>("");
 
   // Dropdown data from API
   const [serviceTypes, setServiceTypes] = useState<DropdownOption[]>([]);
@@ -113,6 +116,11 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
     }
   };
 
+  // Handle sameAsMobile toggle
+  const handleSameAsMobileChange = (value: boolean) => {
+    setFormData((prev) => ({ ...prev, sameAsMobile: value }));
+  };
+
   // Handle communication medium selection
   const handleMediumSelect = (mediumId: string) => {
     setFormData((prev) => ({ ...prev, communicationMedium: mediumId }));
@@ -151,8 +159,18 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
       newErrors.businessType = "Please select your business type";
     }
 
-    if (!formData.flexibleTime.trim()) {
-      newErrors.flexibleTime = "Please specify a flexible time for discussion";
+    if (!formData.flexibleDate) {
+      newErrors.flexibleDate = "Please select a preferred day";
+    }
+
+    if (!formData.flexibleTime) {
+      newErrors.flexibleTime = "Please select a preferred time";
+    }
+
+    if (!formData.whatsAppNumber) {
+      newErrors.whatsAppNumber = "WhatsApp number is required";
+    } else if (!/^\d{7,15}$/.test(formData.whatsAppNumber)) {
+      newErrors.whatsAppNumber = "Enter digits only, no + sign (e.g., 94761234567)";
     }
 
     if (!formData.communicationMedium) {
@@ -177,8 +195,8 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
       const response = await apiClient.post("/customer/contact", formData);
       if (response.data.status) {
         toast.success(response.data.message);
-        if (response.data.data?.customerId) {
-          setCustomerId(response.data.data.customerId);
+        if (response.data.data?.inquiryId) {
+          setInquiryId(response.data.data.inquiryId);
           setShowOtpModal(true);
         }
       } else {
@@ -199,14 +217,14 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
   const handleVerifyOtp = async (otp: string): Promise<{ success: boolean; message?: string }> => {
     try {
       const response = await apiClient.post("/customer/verify-otp", {
-        customerId,
+        inquiryId,
         otp,
       });
 
       if (response.data.status) {
         toast.success(response.data.message || "OTP verified successfully!");
         setShowOtpModal(false);
-        setCustomerId("");
+        setInquiryId("");
         setShowSuccessModal(true);
         setFormData(initialFormData);
         return { success: true };
@@ -226,7 +244,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
   const handleResendOtp = async (): Promise<{ success: boolean; message?: string }> => {
     try {
       const response = await apiClient.post("/customer/resend-otp", {
-        customerId,
+        inquiryId,
       });
 
       if (response.data.status) {
@@ -269,13 +287,14 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         onInputChange={handleInputChange}
         onSelectChange={handleSelectChange}
         onPhoneChange={handlePhoneChange}
+        onSameAsMobileChange={handleSameAsMobileChange}
         onMediumSelect={handleMediumSelect}
         onSubmit={handleSubmit}
       />
       <OtpVerificationModal
         isOpen={showOtpModal}
         onClose={handleOtpModalClose}
-        customerId={customerId}
+        inquiryId={inquiryId}
         onVerifyOtp={handleVerifyOtp}
         onResendOtp={handleResendOtp}
       />
