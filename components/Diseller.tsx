@@ -103,7 +103,7 @@ const steps = [
   },
   {
     num: "04",
-    title: "Grow &amp; Scale",
+    title: "Grow & Scale",
     desc: "Use analytics insights to optimize conversion rates, run campaigns, and scale your revenue.",
   },
 ];

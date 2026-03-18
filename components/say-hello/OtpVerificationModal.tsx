@@ -7,7 +7,7 @@ import { X, ShieldCheck, AlertCircle, RefreshCw } from "lucide-react";
 interface OtpVerificationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  customerId: string;
+  inquiryId: string;
   onVerifyOtp: (otp: string) => Promise<{ success: boolean; message?: string }>;
   onResendOtp: () => Promise<{ success: boolean; message?: string }>;
 }
@@ -15,7 +15,7 @@ interface OtpVerificationModalProps {
 const OtpVerificationModal = ({
   isOpen,
   onClose,
-  customerId,
+  inquiryId,
   onVerifyOtp,
   onResendOtp,
 }: OtpVerificationModalProps) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import {
   Send,
   User,
@@ -15,6 +15,7 @@ import {
   MapPin,
   Globe,
   Layers,
+  Calendar,
 } from "lucide-react";
 import type { CountryCode } from "libphonenumber-js/core";
 import { FormData, FormErrors, DropdownOption } from "./types";
@@ -22,8 +23,20 @@ import { communicationMediums, locations } from "./constants";
 import InputField from "./InputField";
 import PhoneInputField from "./PhoneInputField";
 import SearchableSelectField from "./SearchableSelectField";
+import SelectField from "./SelectField";
 import TextareaField from "./TextareaField";
 import MediumCard from "./MediumCard";
+import TimePickerField from "./TimePickerField";
+
+const DAYS_OF_WEEK = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
 interface ContactFormSectionProps {
   formData: FormData;
@@ -39,6 +52,7 @@ interface ContactFormSectionProps {
   ) => void;
   onSelectChange: (name: string, value: string) => void;
   onPhoneChange: (value: string) => void;
+  onSameAsMobileChange: (value: boolean) => void;
   onMediumSelect: (mediumId: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
@@ -55,11 +69,20 @@ const ContactFormSection = ({
   onInputChange,
   onSelectChange,
   onPhoneChange,
+  onSameAsMobileChange,
   onMediumSelect,
   onSubmit,
 }: ContactFormSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  // Sync WhatsApp number when "Same as Mobile" is checked or mobile changes
+  useEffect(() => {
+    if (!formData.sameAsMobile) return;
+    const stripped = formData.mobile ? formData.mobile.replace(/^\+/, "") : "";
+    onSelectChange("whatsAppNumber", stripped);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.mobile, formData.sameAsMobile]);
 
   return (
     <section
@@ -229,16 +252,60 @@ const ContactFormSection = ({
                   Schedule a Discussion
                 </h3>
                 <div className="space-y-6">
-                  <InputField
-                    label="Flexible Time for Discussion"
-                    name="flexibleTime"
-                    placeholder="e.g., Weekdays after 3 PM, Monday & Wednesday mornings"
-                    value={formData.flexibleTime}
-                    onChange={onInputChange}
-                    error={errors.flexibleTime}
-                    required
-                    icon={<Clock className="w-5 h-5" />}
-                  />
+                  {/* Day & Time row */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <SelectField
+                      label="Preferred Day"
+                      name="flexibleDate"
+                      value={formData.flexibleDate}
+                      onChange={onInputChange}
+                      options={DAYS_OF_WEEK}
+                      placeholder="Select a day"
+                      error={errors.flexibleDate}
+                      required
+                      icon={<Calendar className="w-5 h-5" />}
+                    />
+                    <TimePickerField
+                      label="Preferred Time"
+                      name="flexibleTime"
+                      value={formData.flexibleTime ?? ""}
+                      onChange={onSelectChange}
+                      error={errors.flexibleTime}
+                      required
+                    />
+                  </div>
+
+                  {/* WhatsApp Number */}
+                  <div>
+                    <InputField
+                      label="WhatsApp Number"
+                      name="whatsAppNumber"
+                      placeholder="e.g., 94761234567"
+                      value={formData.whatsAppNumber ?? ""}
+                      onChange={onInputChange}
+                      error={errors.whatsAppNumber}
+                      required
+                      icon={<Phone className="w-5 h-5" />}
+                    />
+                    <label className="mt-3 flex items-center gap-2.5 cursor-pointer select-none w-fit">
+                      <div
+                        onClick={() => onSameAsMobileChange(!formData.sameAsMobile)}
+                        className={`relative w-10 h-5 rounded-full transition-all duration-300 shrink-0 ${
+                          formData.sameAsMobile ? "bg-[#32A790]" : "bg-gray-200"
+                        }`}
+                      >
+                        <div
+                          className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-300 ${
+                            formData.sameAsMobile ? "translate-x-5" : "translate-x-0"
+                          }`}
+                        />
+                      </div>
+                      <span className="text-sm text-gray-600">
+                        Same as Mobile{" "}
+                        <span className="text-gray-400 text-xs">(no + sign, e.g. 94769781811)</span>
+                      </span>
+                    </label>
+                  </div>
 
                   {/* Communication Medium Selection */}
                   <div>

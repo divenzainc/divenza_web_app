@@ -8,7 +8,10 @@ export interface FormData {
   serviceType: string;
   businessType: string;
   businessBrief: string;
+  flexibleDate: string;
   flexibleTime: string;
+  sameAsMobile: boolean;
+  whatsAppNumber: string;
   communicationMedium: string;
 }
 
@@ -19,7 +22,9 @@ export interface FormErrors {
   email?: string;
   serviceType?: string;
   businessType?: string;
+  flexibleDate?: string;
   flexibleTime?: string;
+  whatsAppNumber?: string;
   communicationMedium?: string;
 }
 
