@@ -54,7 +54,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         const response = await apiClient.get("/service-type/get-all");
         if (response.data.status) {
           setServiceTypes(
-            response.data.data.map((item: { _id: string; name: string }) => ({
+            response.data.data.data.map((item: { _id: string; name: string }) => ({
               _id: item._id,
               name: item.name,
             }))
@@ -72,7 +72,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         const response = await apiClient.get("/business-type/get-all");
         if (response.data.status) {
           setBusinessTypes(
-            response.data.data.map((item: { _id: string; name: string }) => ({
+            response.data.data.data.map((item: { _id: string; name: string }) => ({
               _id: item._id,
               name: item.name,
             }))

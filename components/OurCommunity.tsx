@@ -29,36 +29,36 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Mitchell",
-    role: "CEO",
-    company: "TechVentures Inc",
-    industry: "Technology",
+    name: "Jhon Rizane Pitter",
+    role: "Director",
+    company: "H J Pitter & Co",
+    industry: "Ecommerce",
     image: "/testimonials/avatar1.jpg",
     rating: 5,
     feedback:
-      "Divenza transformed our entire digital infrastructure. Their team didn't just deliver a product—they understood our vision and made it reality. The attention to detail and commitment to excellence exceeded all expectations.",
+      "Working with Divenza felt like having an extension of our own team. They built our e-commerce platform from scratch, and the results speak for themselves. Sales doubled within the first quarter of launch.",
     highlight: "300% increase in operational efficiency",
     color: "primary",
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Ramesh Kumar",
     role: "Founder",
-    company: "GreenLeaf Organics",
-    industry: "E-Commerce",
+    company: "Lanka Tech Solutions",
+    industry: "Technology",
     image: "/testimonials/avatar2.jpg",
     rating: 5,
     feedback:
-      "Working with Divenza felt like having an extension of our own team. They built our e-commerce platform from scratch, and the results speak for themselves. Sales doubled within the first quarter of launch.",
+      "Divenza transformed our entire digital infrastructure. Their team didn't just deliver a product—they understood our vision and made it reality. The attention to detail and commitment to excellence exceeded all expectations.",
     highlight: "2x revenue growth in 3 months",
     color: "secondary",
   },
   {
     id: 3,
-    name: "Amanda Rodriguez",
-    role: "Operations Director",
-    company: "Swift Logistics",
-    industry: "Logistics",
+    name: "Sri Gobinath (Canada)",
+    role: "Founder",
+    company: "Pixelphotos",
+    industry: "Technology",
     image: "/testimonials/avatar3.jpg",
     rating: 5,
     feedback:
@@ -68,10 +68,10 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 4,
-    name: "James Thompson",
-    role: "Marketing Head",
-    company: "Bloom Beauty",
-    industry: "Retail",
+    name: "Dr. Somaratne Dissanayake",
+    role: "Film Director",
+    company: "Cinefilms Lanka",
+    industry: "Film Production",
     image: "/testimonials/avatar4.jpg",
     rating: 5,
     feedback:
@@ -81,10 +81,10 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 5,
-    name: "Elena Kowalski",
-    role: "CTO",
-    company: "FinanceFlow",
-    industry: "FinTech",
+    name: "Livindan (Canada)",
+    role: "Director",
+    company: "Vili Services",
+    industry: "Logistic",
     image: "/testimonials/avatar5.jpg",
     rating: 5,
     feedback:
@@ -94,17 +94,17 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 6,
-    name: "David Park",
-    role: "Restaurant Owner",
-    company: "Seoul Kitchen",
-    industry: "Hospitality",
+    name: "Isham Illham",
+    role: "Director",
+    company: "UNH School",
+    industry: "Education",
     image: "/testimonials/avatar6.jpg",
     rating: 5,
     feedback:
-      "DiPOS changed the game for our restaurant chain. From order management to inventory tracking, everything is now streamlined. The team's support during implementation was exceptional.",
-    highlight: "40% faster order processing",
+      "DiPOS has transformed how our school operates on a daily basis. From student management to attendance tracking and academic records, everything is now well-organized and efficient. The implementation process was smooth, and the support team was highly responsive and professional.",
+    highlight: "50% improvement in administrative efficiency",
     color: "secondary",
-  },
+  }
 ];
 
 const colors = {
