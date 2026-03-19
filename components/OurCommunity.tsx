@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
     image: "/testimonials/avatar3.jpg",
     rating: 5,
     feedback:
-      "The DiTech solution revolutionized how we manage our multi-branch operations. Real-time tracking, seamless integration, and incredible support. Divenza delivers what they promise—and then some.",
+      "The Ditech Cloud solution revolutionized how we manage our multi-branch operations. Real-time tracking, seamless integration, and incredible support. Divenza delivers what they promise—and then some.",
     highlight: "50% reduction in operational costs",
     color: "primary",
   },

@@ -89,7 +89,7 @@ const servicesData: ServiceDetail[] = [
       "Scalable infrastructure",
       "24/7 monitoring & support",
     ],
-    technologies: ["React", "Next.js", "Node.js", "PostgreSQL", "AWS"],
+    technologies: ["React", "Next.js", "Node.js", "PostgreSQL", "MySQL", "Firebase", "AWS"],
     gradient: "from-[#3F3369] to-[#5a4d8a]",
     shadowColor: "rgba(63,51,105,0.3)",
     category: "development",
@@ -117,7 +117,7 @@ const servicesData: ServiceDetail[] = [
       "Seamless updates",
       "Analytics integration",
     ],
-    technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
+    technologies: ["React Native", "Flutter", "Firebase", "Supabase"],
     gradient: "from-[#32A790] to-[#4bc4a8]",
     shadowColor: "rgba(50,167,144,0.3)",
     category: "development",
@@ -216,12 +216,12 @@ const servicesData: ServiceDetail[] = [
     fullDescription:
       "Social media is where your customers spend their time. We create compelling content, build engaged communities, and turn followers into loyal customers through authentic brand storytelling.",
     features: [
-      "Content Strategy",
-      "Community Management",
-      "Influencer Partnerships",
+      "Content Strategy & Creation",
+      "Account Management",
+      "Socialmedia Manager",
       "Social Advertising",
       "Brand Monitoring",
-      "Crisis Management",
+      
     ],
     benefits: [
       "Increased brand awareness",
@@ -237,7 +237,7 @@ const servicesData: ServiceDetail[] = [
   {
     id: "email-marketing",
     icon: <Mail className="w-7 h-7" />,
-    title: "Email Marketing",
+    title: "Email, SMS & WhatsApp Marketing",
     tagline: "Direct to Inbox Impact",
     description:
       "Engage and convert your audience with personalized email campaigns that deliver results.",
@@ -254,10 +254,11 @@ const servicesData: ServiceDetail[] = [
     benefits: [
       "High conversion rates",
       "Cost-effective reach",
+      "Instant customer engagement",
       "Personalized messaging",
       "Automation at scale",
     ],
-    technologies: ["Mailchimp", "Klaviyo", "SendGrid", "ActiveCampaign"],
+    technologies: ["Divenza Notify","Mailchimp", "Klaviyo", "SendGrid", "ActiveCampaign", "Twilio"],
     gradient: "from-[#4bc4a8] to-[#32A790]",
     shadowColor: "rgba(75,196,168,0.3)",
     category: "marketing",
@@ -1001,7 +1002,7 @@ const OurProcessSection = () => {
               >
                 {/* Step Number Background */}
                 <div
-                  className="absolute -top-4 -right-4 text-[80px] font-bold opacity-5 leading-none"
+                  className="absolute -top-3 -right-1 text-[80px] font-bold opacity-5 leading-none"
                   style={{ color: step.color }}
                 >
                   {step.number}
