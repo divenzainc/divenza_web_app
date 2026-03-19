@@ -250,11 +250,13 @@ const WhoWeAreSection = () => {
 
                 <p className="text-gray-600 leading-relaxed">
                   Our flagship products{" "}
-                  <span className="font-semibold text-[#3F3369]"><Link href="https://diseller.com">DI Seller</Link></span>
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://diseller.com">Diseller</Link></span>
                   ,{" "}
-                  <span className="font-semibold text-[#3F3369]"><Link href="https://ditechcloud.com">DI Tech Cloud</Link></span>,
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://ditechcloud.com">Ditech Cloud</Link></span>,{" "}
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://dicrmcloud.com">Dicrm Cloud</Link></span>
+                  ,{" "}
                   and{" "}
-                  <span className="font-semibold text-[#3F3369]"><Link href="https://diposcloud.com">DI POS Cloud</Link></span>
+                  <span className="font-semibold text-[#3F3369]"><Link href="https://diposcloud.com">Dipos Cloud</Link></span>
                   {" "}were born from real business needs, refined through real
                   feedback, and trusted by businesses that demand excellence.
                 </p>
@@ -262,7 +264,7 @@ const WhoWeAreSection = () => {
                 {/* Quick Stats */}
                 <div className="flex flex-wrap gap-4 md:gap-5 mt-6">
                   {[
-                    { label: "Products", value: "3+", icon: <Rocket className="w-4 h-4" /> },
+                    { label: "Products", value: "4+", icon: <Rocket className="w-4 h-4" /> },
                     { label: "Services", value: "10+", icon: <Sparkles className="w-4 h-4" /> },
                     { label: "Focus", value: "100%", icon: <Target className="w-4 h-4" /> },
                   ].map((stat, index) => (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import * as Sentry from "@sentry/nextjs";
 import apiClient from "@/utils/ApiClient";
 import toast from "react-hot-toast";
 import { isPossiblePhoneNumber } from "react-phone-number-input";
@@ -54,7 +55,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         const response = await apiClient.get("/service-type/get-all");
         if (response.data.status) {
           setServiceTypes(
-            response.data.data.map((item: { _id: string; name: string }) => ({
+            response.data.data.data.map((item: { _id: string; name: string }) => ({
               _id: item._id,
               name: item.name,
             }))
@@ -62,6 +63,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         }
       } catch (error) {
         console.error("Error fetching service types:", error);
+        Sentry.captureException(error) 
       } finally {
         setIsLoadingServiceTypes(false);
       }
@@ -72,7 +74,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         const response = await apiClient.get("/business-type/get-all");
         if (response.data.status) {
           setBusinessTypes(
-            response.data.data.map((item: { _id: string; name: string }) => ({
+            response.data.data.data.map((item: { _id: string; name: string }) => ({
               _id: item._id,
               name: item.name,
             }))
@@ -80,6 +82,7 @@ const SayHelloPage = ({ defaultCountry = "LK" }: SayHelloPageProps) => {
         }
       } catch (error) {
         console.error("Error fetching business types:", error);
+        Sentry.captureException(error) 
       } finally {
         setIsLoadingBusinessTypes(false);
       }

@@ -333,7 +333,7 @@ const HeroSectionAutomated = () => {
             className="text-center lg:text-left"
           >
             {/* Badge */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
@@ -347,7 +347,7 @@ const HeroSectionAutomated = () => {
               <span className="text-sm font-medium" style={{ color: "#3F3369" }}>
                 AI-Powered Automation
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Headline */}
             <motion.h1
@@ -439,9 +439,9 @@ const HeroSectionAutomated = () => {
               className="mt-16 flex flex-wrap justify-center lg:justify-start gap-8 lg:gap-12"
             >
               {[
-                { value: 500, suffix: "+", label: "Businesses Automated" },
-                { value: 85, suffix: "%", label: "Time Saved" },
-                { value: 10, suffix: "x", label: "Growth Achieved" },
+                { value: 10, suffix: "+", label: "Businesses Automated" },
+                { value: 90, suffix: "%", label: "Time Saved" },
+                { value: 25, suffix: "x", label: "Growth Achieved" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -797,7 +797,7 @@ const HeroSectionAutomated = () => {
                     <div className="text-xs text-gray-400 font-medium">Growth</div>
                     <div className="text-base font-bold text-gray-900 flex items-center gap-1">
                       <TrendingUp className="w-4 h-4 text-[#32A790]" />
-                      312%
+                      99%
                     </div>
                   </div>
                 </div>
@@ -852,14 +852,14 @@ const HeroSectionAutomated = () => {
               >
                 <div className="flex items-center gap-3">
                   <motion.div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center bg-green-100"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center "
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 1, repeat: Infinity }}
                   >
                     <CheckCircle2 className="w-5 h-5 text-green-600" />
                   </motion.div>
                   <div className="text-sm font-semibold text-gray-700">
-                    <span className="text-[#32A790]">1,247</span> tasks automated today
+                    <span className="text-[#32A790]">25</span> Tasks automated today
                   </div>
                 </div>
               </motion.div>

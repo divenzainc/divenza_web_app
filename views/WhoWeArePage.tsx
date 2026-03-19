@@ -181,9 +181,9 @@ const HeroSection = () => {
             className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16"
           >
             {[
-              { value: "3+", label: "Years of Excellence" },
-              { value: "50+", label: "Happy Clients" },
-              { value: "100+", label: "Projects Delivered" },
+              { value: "5+", label: "Years of Excellence" },
+              { value: "25+", label: "Happy Clients" },
+              { value: "30+", label: "Projects Delivered" },
               { value: "24/7", label: "Support Available" },
             ].map((stat, index) => (
               <motion.div
@@ -234,7 +234,7 @@ const OurStorySection = () => {
 
   const milestones = [
     {
-      year: "2022",
+      year: "2021",
       title: "The Beginning",
       description:
         "Divenza was born with a simple mission: to help businesses thrive through technology.",
@@ -244,7 +244,7 @@ const OurStorySection = () => {
       year: "2023",
       title: "Product Launch",
       description:
-        "Launched DiSeller, DiTech, and DiPOS - our flagship products serving real business needs.",
+        "Launched Diseller, Ditech Cloud, and Dipos Cloud - our flagship products serving real business needs.",
       icon: <Rocket className="w-5 h-5" />,
     },
     {

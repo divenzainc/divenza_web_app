@@ -92,7 +92,7 @@ const services: Service[] = [
     title: "Social Media Marketing",
     description:
       "Build meaningful connections with your audience through strategic social media presence.",
-    features: ["Content Strategy", "Community Management", "Influencer Partnerships", "Social Ads"],
+    features: ["Content Strategy & Creation", "Account Management", "Socialmedia Manager", "Social Ads"],
     gradient: "from-[#3F3369] to-[#5a4d8a]",
     shadowColor: "rgba(63,51,105,0.3)",
     category: "marketing",
@@ -100,7 +100,7 @@ const services: Service[] = [
   {
     id: "email-marketing",
     icon: <Mail className="w-7 h-7" />,
-    title: "Email Marketing",
+    title: "Email, SMS & WA Marketing",
     description:
       "Engage and convert your audience with personalized email campaigns that deliver results.",
     features: ["Campaign Automation", "List Segmentation", "A/B Testing", "Performance Analytics"],
@@ -446,7 +446,7 @@ const WhatWeDoSection = () => {
 
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                <span className="text-secondary">Not Sure Where to </span>
+                <span className="text-secondary">Not Sure Where & How to </span>
                 <span
                   className="bg-clip-text text-transparent"
                   style={{
