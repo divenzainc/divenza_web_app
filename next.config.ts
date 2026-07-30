@@ -1,17 +1,18 @@
-import { withSentryConfig } from "@sentry/nextjs";
 // next.config.ts
 import type { NextConfig } from "next";
 import withPWAInit from "next-pwa";
 
+type NextConfigPlugin = (config: NextConfig) => NextConfig;
+
 const withPWA = withPWAInit({
-  dest: "public",              // ← output folder for service-worker.js, manifest, etc.
-  register: true,              // auto register service worker (recommended)
-  skipWaiting: true,           // new service worker takes over immediately
-  disable: process.env.NODE_ENV === "development", // very useful during dev
-  // cacheOnFrontEndNav: true, // good for SPA-like feel (optional but recommended)
+  dest: "public", // output folder for service-worker.js, manifest, etc.
+  register: true, // auto register service worker
+  skipWaiting: true, // new service worker takes over immediately
+  disable: process.env.NODE_ENV === "development",
+  // cacheOnFrontEndNav: true,
   // reloadOnOnline: true,
-  // fallbacks: { image: "/fallback.png", document: "/offline.html" }, // optional
-  buildExcludes: [/\.map$/], // exclude source maps from precache (debug files, not needed offline)
+  // fallbacks: { image: "/fallback.png", document: "/offline.html" },
+  buildExcludes: [/\.map$/],
 });
 
 const nextConfig: NextConfig = {
@@ -25,45 +26,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  // You can add more settings here later
-  turbopack: {},           // ← only if you're actually using turbopack (see note below)
+  turbopack: {},
 };
 
-export default withSentryConfig(withPWA(nextConfig as any), {
-  // For all available options, see:
-  // https://www.npmjs.com/package/@sentry/webpack-plugin#options
-
-  org: "divenza",
-
-  project: "javascript-nextjs",
-
-  // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
-
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-  // Upload a larger set of source maps for prettier stack traces (increases build time)
-  widenClientFileUpload: true,
-
-  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-  // This can increase your server load as well as your hosting bill.
-  // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-  // side errors will fail.
-  tunnelRoute: "/monitoring",
-
-  webpack: {
-    // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-    // See the following for more information:
-    // https://docs.sentry.io/product/crons/
-    // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true,
-
-    // Tree-shaking options for reducing bundle size
-    treeshake: {
-      // Automatically tree-shake Sentry logger statements to reduce bundle size
-      removeDebugLogging: true,
-    },
-  }
-});
+export default (withPWA as unknown as NextConfigPlugin)(nextConfig);
